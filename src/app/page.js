@@ -28,9 +28,11 @@ export default function About() {
         In high school, I led the{" "}
         <Link href="https://app.staugustinechs.ca">App Development Team</Link>{" "}
         and grew our mobile app to hundreds of monthly active users. I developed
-        our high school's <Link href="https://staugustinechs.ca">website</Link>{" "}
-        (and{" "}
-        <Link href="https://app.staugustinechs.ca">mobile app's website</Link>{" "}
+        our high school&apos;s{" "}
+        <Link href="https://staugustinechs.ca">website</Link> (and{" "}
+        <Link href="https://app.staugustinechs.ca">
+          mobile app&apos;s website
+        </Link>{" "}
         too).
       </p>
       <div className="flex justify-between">
