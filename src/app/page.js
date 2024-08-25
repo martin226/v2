@@ -1,5 +1,6 @@
 import Link from "./components/Link";
 import Headshot from "@/app/assets/headshot.png";
+import Signature from "@/app/assets/signature.png";
 import Image from "next/image";
 
 export default function About() {
@@ -32,13 +33,23 @@ export default function About() {
         <Link href="https://app.staugustinechs.ca">mobile app's website</Link>{" "}
         too).
       </p>
-      <div className="w-48 h-48 relative rounded-full border">
-        <Image
-          src={Headshot}
-          alt="Martin Sit"
-          fill
-          className="object-cover object-top rounded-full"
-        />
+      <div className="flex justify-between">
+        <div className="relative flex-1">
+          <Image
+            src={Signature}
+            alt="Martin Sit Signature"
+            fill
+            className="object-contain"
+          />
+        </div>
+        <div className="w-48 h-48 relative rounded-full border">
+          <Image
+            src={Headshot}
+            alt="Martin Sit Headshot"
+            fill
+            className="object-cover object-top rounded-full"
+          />
+        </div>
       </div>
     </div>
   );
