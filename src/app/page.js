@@ -1,47 +1,45 @@
-import About from "./components/About";
-import Footer from "./components/Footer";
+import Link from "./components/Link";
+import Headshot from "@/app/assets/headshot.png";
+import Image from "next/image";
 
-export default function Home() {
-  const socials = [
-    { name: "linkedin", href: "https://www.linkedin.com/in/martin-sit/" },
-    { name: "github", href: "https://github.com/martin226" },
-    { name: "resume", href: "/resume.pdf" },
-    { name: "email", href: "mailto:martinsit288@gmail.com" },
-  ];
-
-  const projects = [
-    {
-      name: "LiteNet",
-      href: "https://github.com/martin226/litenet",
-      description:
-        "a C++ neural network framework built from scratch with 0 external dependencies.",
-    },
-    {
-      name: "Sensai",
-      href: "https://github.com/martin226/sensai",
-      description:
-        "a workout platform that uses computer vision to provide you with real-time suggestions and analytics.",
-    },
-    {
-      name: "Uptone",
-      href: "https://github.com/martin226/uptone",
-      description:
-        "a browser extension that protects users from hate speech on Twitter/X via a CNN built for sentiment analysis.",
-    },
-    {
-      name: "Credibility",
-      href: "https://github.com/martin226/credibility",
-      description:
-        "a research tool that uses LLMs and key metrics to assess the credibility of websites.",
-    },
-  ];
-
+export default function About() {
   return (
-    <main className="flex justify-center bg-stone-100 min-h-screen selection:bg-yellow-200">
-      <div className="flex flex-col gap-4 md:max-w-[500px] m-6 md:m-20 text-neutral-500 font-[380] md:mt-[100px] lg:mt-[180px]">
-        <About projects={projects} />
-        <Footer socials={socials} />
+    <div className="flex flex-col gap-4">
+      <p>CS @ University of Waterloo.</p>
+      <p>
+        Previously, I worked as an ML Research Intern at{" "}
+        <Link href="https://sunnybrook.ca/research/">
+          Sunnybrook Research Institute
+        </Link>
+        , building deep learning models to accelerate focused ultrasound
+        treatment monitoring.
+      </p>
+      <p>
+        Before that, I was a Research Intern at the University of Waterloo under
+        the guidance of{" "}
+        <Link href="https://cs.uwaterloo.ca/~dbarrada/">
+          Professor Diogo Barradas
+        </Link>
+        , building systems to advance censorship-resistant Internet
+        communications.
+      </p>
+      <p>
+        In high school, I led the{" "}
+        <Link href="https://app.staugustinechs.ca">App Development Team</Link>{" "}
+        and grew our mobile app to hundreds of monthly active users. I developed
+        our high school's <Link href="https://staugustinechs.ca">website</Link>{" "}
+        (and{" "}
+        <Link href="https://app.staugustinechs.ca">mobile app's website</Link>{" "}
+        too).
+      </p>
+      <div className="w-48 h-48 relative rounded-full border">
+        <Image
+          src={Headshot}
+          alt="Martin Sit"
+          fill
+          className="object-cover object-top rounded-full"
+        />
       </div>
-    </main>
+    </div>
   );
 }
