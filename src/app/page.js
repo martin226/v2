@@ -34,12 +34,18 @@ export default function About() {
         treatment monitoring.
       </p>
       {!isExpanded ? (
-        <button
-          className="text-neutral-700 font-medium text-left"
-          onClick={() => setIsExpanded(true)}
-        >
-          continue reading →
-        </button>
+        <div className="flex flex-row justify-between">
+          <span className="text-transparent bg-gradient-to-r bg-clip-text from-neutral-500 to-transparent line-clamp-1">
+            Before that, I was a Research Intern at the University of Waterloo
+            &hellip;{" "}
+          </span>
+          <button
+            className="text-neutral-700 font-medium text-right whitespace-nowrap"
+            onClick={() => setIsExpanded(true)}
+          >
+            continue reading →
+          </button>
+        </div>
       ) : (
         <>
           <p>
@@ -71,6 +77,12 @@ export default function About() {
             where among other things, I spearheaded the development of the event
             website and dashboard used by hundreds of participants.
           </p>
+          <button
+            className="text-neutral-700 font-medium text-left"
+            onClick={() => setIsExpanded(false)}
+          >
+            ← show less
+          </button>
         </>
       )}
       <NextLink
