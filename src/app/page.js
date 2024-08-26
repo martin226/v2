@@ -11,7 +11,20 @@ export default function About() {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
     <div className="flex flex-col gap-4">
-      <p>CS @ University of Waterloo.</p>
+      <p>
+        I'm a CS student at the{" "}
+        <Link href="https://uwaterloo.ca">University of Waterloo</Link> who
+        loves building cool things.
+      </p>
+      <p>
+        I'm proficient in Python, JS/TS, and C++, with a lot of experience in
+        full-stack web dev. Recently, I've been diving deep into ML, creating
+        projects such as a{" "}
+        <Link href="https://github.com/martin226/litenet">
+          C++ deep learning framework from scratch
+        </Link>
+        .
+      </p>
       <p>
         Previously, I worked as an ML Research Intern at{" "}
         <Link href="https://sunnybrook.ca/research/">
@@ -19,15 +32,6 @@ export default function About() {
         </Link>
         , building deep learning models to accelerate focused ultrasound
         treatment monitoring.
-      </p>
-      <p>
-        Before that, I was a Research Intern at the University of Waterloo under
-        the guidance of{" "}
-        <Link href="https://cs.uwaterloo.ca/~dbarrada/">
-          Professor Diogo Barradas
-        </Link>
-        , building systems to advance censorship-resistant Internet
-        communications.
       </p>
       {!isExpanded ? (
         <button
@@ -38,6 +42,15 @@ export default function About() {
         </button>
       ) : (
         <>
+          <p>
+            Before that, I was a Research Intern at the University of Waterloo
+            under the guidance of{" "}
+            <Link href="https://cs.uwaterloo.ca/~dbarrada/">
+              Professor Diogo Barradas
+            </Link>
+            , building systems to advance censorship-resistant Internet
+            communications.
+          </p>
           <p>
             In high school, I led the{" "}
             <Link href="https://app.staugustinechs.ca">
