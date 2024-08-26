@@ -12,14 +12,14 @@ export default function About() {
   return (
     <div className="flex flex-col gap-4">
       <p>
-        I'm a CS student at the{" "}
+        I&apos;m a CS student at the{" "}
         <Link href="https://uwaterloo.ca">University of Waterloo</Link> who
         loves building cool things.
       </p>
       <p>
-        I'm proficient in Python, JS/TS, and C++, with a lot of experience in
-        full-stack web dev. Recently, I've been diving deep into ML, creating
-        projects such as a{" "}
+        I&apos;m proficient in Python, JS/TS, and C++, with a lot of experience
+        in full-stack web dev. Recently, I&apos;ve been diving deep into ML,
+        creating projects such as a{" "}
         <Link href="https://github.com/martin226/litenet">
           C++ deep learning framework from scratch
         </Link>
