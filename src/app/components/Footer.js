@@ -6,6 +6,7 @@ export default function Footer({ className }) {
     { name: "github", href: "https://github.com/martin226" },
     { name: "resume", href: "/resume.pdf" },
     { name: "email", href: "mailto:martinsit288@gmail.com" },
+    { name: "</>", href: "https://github.com/martin226/v2" },
   ];
   return (
     <footer className={`flex flex-col gap-4 ${className}`}>
