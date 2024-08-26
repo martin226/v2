@@ -6,6 +6,7 @@ import Headshot from "@/app/assets/headshot.png";
 import Signature from "@/app/assets/signature.png";
 import Image from "next/image";
 import { useState } from "react";
+import ComputerDesktop from "./components/icon/ComputerDesktop";
 
 export default function About() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -90,20 +91,7 @@ export default function About() {
         className="text-center py-4 rounded-md border border-stone-700 hover:bg-stone-700 hover:text-neutral-200 bg-stone-100 text-neutral-500 transform transition-all duration-300"
       >
         see what i&apos;ve built{" "}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="size-6 inline align-top"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"
-          />
-        </svg>
+        <ComputerDesktop className="size-6 inline align-top" />
       </NextLink>
       <div className="flex justify-between">
         <div className="relative flex-1">
