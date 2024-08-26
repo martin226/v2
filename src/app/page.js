@@ -1,4 +1,5 @@
 import Link from "./components/Link";
+import NextLink from "next/link";
 import Headshot from "@/app/assets/headshot.png";
 import Signature from "@/app/assets/signature.png";
 import Image from "next/image";
@@ -35,6 +36,12 @@ export default function About() {
         </Link>{" "}
         too).
       </p>
+      <NextLink
+        href="/projects"
+        className="text-center py-4 rounded-md border border-stone-700 hover:bg-stone-700 hover:text-neutral-200 bg-stone-100 text-neutral-500 transform transition-all duration-300"
+      >
+        see what i've built →
+      </NextLink>
       <div className="flex justify-between">
         <div className="relative flex-1">
           <Image
