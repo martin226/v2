@@ -43,6 +43,7 @@ export default function Home() {
         "Next.js",
         "TailwindCSS",
         "Flask",
+        "Selenium",
         "GPT-4o",
       ],
       github: "https://github.com/martin226/credibility",
