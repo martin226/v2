@@ -13,12 +13,31 @@ import SACHSWebsiteImage from "../assets/projects/sachs-website.png";
 import TicTacToeImage from "../assets/projects/tictactoe.png";
 import EnigmaImage from "../assets/projects/enigma.png";
 import COVID19TrackerImage from "../assets/projects/covid19-tracker.png";
+import EcoRewardsImage from "../assets/projects/ecorewards.png";
 
 import { useState } from "react";
 import MagnifyingGlass from "../components/icon/MagnifyingGlass";
 
 export default function Home() {
   const projects = [
+    {
+      title: "EcoRewards",
+      href: "https://devpost.com/software/ecorewards-t0qw26",
+      description:
+        "a mobile app that rewards users for making eco-friendly decisions. made in 36h for Hack the North 2024, winner of $1,200 RBC prize.",
+      image: EcoRewardsImage,
+      imageAlt: "EcoRewards mobile app",
+      technologies: [
+        "JavaScript",
+        "React",
+        "Express.js",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "GPT-4o",
+        "NFC",
+      ],
+      github: "https://github.com/jeffrey-zang/ecorewards",
+    },
     {
       title: "LiteNet",
       href: "https://github.com/martin226/litenet",
