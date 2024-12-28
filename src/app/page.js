@@ -18,7 +18,7 @@ export default function About() {
         loves building cool things.
       </p>
       <p>
-        I&apos;m proficient in Python, JS/TS, and C++, with a lot of experience
+        I&apos;m experienced in Python, JS/TS, and C++, with a lot of experience
         in full-stack web dev. Recently, I&apos;ve been diving deep into ML,
         creating projects such as a{" "}
         <Link href="https://github.com/martin226/litenet">
