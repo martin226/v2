@@ -18,6 +18,12 @@ export default function Header({ className }) {
       isActive: pathname === "/projects",
       isNextLink: true,
     },
+    {
+      name: "writing",
+      href: "/writing",
+      isActive: pathname.startsWith("/writing"),
+      isNextLink: true,
+    },
   ];
   return (
     <div className="flex justify-between">
