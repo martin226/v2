@@ -2,6 +2,7 @@ import HorizontalNav from "./HorizontalNav";
 
 export default function Footer({ className }) {
   const links = [
+    { name: "x", href: "https://x.com/_martinsit" },
     { name: "linkedin", href: "https://www.linkedin.com/in/martin-sit/" },
     { name: "github", href: "https://github.com/martin226" },
     { name: "resume", href: "/resume.pdf" },
