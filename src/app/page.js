@@ -41,7 +41,7 @@ export default function About() {
                 <Link href="https://jakesresu.me" className="font-medium">
                   product
                 </Link>{" "}
-                to 3,500+ users (idea → launch in &lt;2 days)
+                to 3,500+ users (idea → launch in &lt; 2 days)
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">

@@ -33,34 +33,39 @@ export default function ProjectCard({
   className,
 }) {
   return (
-    <div className={`bg-neutral-100 rounded-lg shadow-md ${className}`}>
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        <Image
-          src={image}
-          placeholder={`data:image/svg+xml;base64,${toBase64(shimmer)}`}
-          alt={imageAlt}
-          className="rounded-t-lg w-full h-[200px] object-cover object-center hover:h-[275px] transition-all duration-300"
-        />
+    <div className={`group bg-neutral-100 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${className}`}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="block overflow-hidden">
+        <div className="relative">
+          <Image
+            src={image}
+            placeholder={`data:image/svg+xml;base64,${toBase64(shimmer)}`}
+            alt={imageAlt}
+            className="rounded-t-lg w-full h-[200px] group-hover:h-[275px] object-cover object-center transition-all duration-500"
+          />
+        </div>
       </a>
-      <div className="p-4">
-        <div className="flex justify-between items-center">
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-neutral-700 font-bold text-2xl hover:underline"
-          >
-            {title}
-          </a>
+      <div className="p-5">
+        <div className="flex justify-between items-start gap-4">
+          <div>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-800 font-bold text-2xl hover:text-neutral-600 transition-colors duration-200 block"
+            >
+              {title}
+            </a>
+            <p className="text-neutral-600 mt-2 leading-relaxed">{description}</p>
+          </div>
           {(github || demo) && (
             <div className="flex flex-wrap gap-2 justify-end">
               {github && (
                 <a
                   href={github}
                   target="_blank"
-                  className="py-1.5 px-3 text-sm font-medium text-center text-neutral-200 bg-stone-700 rounded-md hover:bg-stone-100 hover:text-neutral-500 border border-stone-700 transform transition-all duration-300"
+                  className="py-2 px-4 text-sm font-medium text-center text-neutral-200 bg-stone-800 rounded-lg hover:bg-stone-700 transform transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md whitespace-nowrap"
                 >
-                  <Github className="size-4 inline align-middle mr-1" />
+                  <Github className="size-4 inline align-middle mr-2" />
                   github repo
                 </a>
               )}
@@ -68,21 +73,20 @@ export default function ProjectCard({
                 <a
                   href={demo}
                   target="_blank"
-                  className="py-1.5 px-3 text-sm font-medium text-center text-neutral-700 bg-neutral-200 rounded-md hover:bg-neutral-300"
+                  className="py-2 px-4 text-sm font-medium text-center text-neutral-700 bg-neutral-50 rounded-lg hover:bg-neutral-200 transform transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md border border-neutral-200 whitespace-nowrap"
                 >
                   check it out
-                  <ArrowTopRightOnSquare className="size-4 inline align-middle ml-1" />
+                  <ArrowTopRightOnSquare className="size-4 inline align-middle ml-2" />
                 </a>
               )}
             </div>
           )}
         </div>
-        <p className="text-neutral-500 mt-2">{description}</p>
-        <div className="flex flex-wrap gap-2 mt-2">
+        <div className="flex flex-wrap gap-2 mt-4">
           {technologies.map((technology, index) => (
             <span
               key={index}
-              className="px-2 py-1 bg-neutral-200 text-neutral-700 rounded-md text-xs"
+              className="px-3 py-1 bg-neutral-50/80 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200/80"
             >
               {technology}
             </span>

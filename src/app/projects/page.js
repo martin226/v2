@@ -3,6 +3,9 @@
 import Link from "../components/Link";
 import ProjectList from "../components/ProjectList";
 
+import MakeItJakesImage from "../assets/projects/makeitjakes.gif";
+import TwirlImage from "../assets/projects/twirl.png";
+import LayoffEvadersImage from "../assets/projects/layoffevaders.png";
 import LiteNetImage from "../assets/projects/litenet.gif";
 import SensaiImage from "../assets/projects/sensai.png";
 import UptoneImage from "../assets/projects/uptone.png";
@@ -20,6 +23,39 @@ import MagnifyingGlass from "../components/icon/MagnifyingGlass";
 
 export default function Home() {
   const projects = [
+    {
+      title: "Make It Jake's",
+      href: "https://jakesresu.me",
+      description:
+        "a website for turning any resume into Jake's Resume template. 3,500+ users in 4 days, idea to production in < 2 days.",
+      image: MakeItJakesImage,
+      imageAlt: "Make It Jakes",
+      technologies: ["Ruby on Rails", "Remix.js", "Redis", "Google Cloud Platform"],
+      github: "https://github.com/martin226/makeitjakes",
+      demo: "https://jakesresu.me",
+    },
+    {
+      title: "Twirl",
+      href: "https://dorahacks.io/buidl/21695",
+      description:
+        "an AI agent for turning text/images into 3D-printable models. made in 36h for UofTHacks 2025, 2nd place overall + best use of generative AI.",
+      image: TwirlImage,
+      imageAlt: "Twirl",
+      technologies: ["Python", "FastAPI", "React", "Next.js", "Three.js", "OpenSCAD", "Azure"],
+      github: "https://github.com/martin226/twirl",
+      demo: "https://www.youtube.com/watch?v=8JtZbi48wHM",
+    },
+    {
+      title: "Layoff Evaders",
+      href: "https://devpost.com/software/layoff-evaders",
+      description:
+        "a VR fitness game where you move IRL to dodge layoffs. made in 24h for DeltaHacks 2025, 2nd place overall.",
+      image: LayoffEvadersImage,
+      imageAlt: "Layoff Evaders",
+      technologies: ["Unity", "C#", "Streamlit", "Firebase"],
+      github: "https://github.com/martin226/layoffevaders",
+      demo: "https://www.youtube.com/watch?v=VG-6LGvBcf4"
+    },
     {
       title: "EcoRewards",
       href: "https://devpost.com/software/ecorewards-t0qw26",
