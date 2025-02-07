@@ -35,7 +35,6 @@ export default function About() {
           <span className="text-stone-600 italic font-medium">recently:</span>
           <ul className="grid gap-1 pl-4">
             <li className="relative flex items-start gap-4 group/item">
-              <div className="absolute left-0 top-[10px] w-[4px] h-[4px] bg-stone-600 rounded-full transition-all duration-300 group-hover/item:scale-150" />
               <span className="text-stone-600">
                 shipped a{" "}
                 <Link href="https://jakesresu.me" className="font-medium">
@@ -45,7 +44,6 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <div className="absolute left-0 top-[10px] w-[4px] h-[4px] bg-stone-600 rounded-full transition-all duration-300 group-hover/item:scale-150" />
               <span className="text-stone-600">
                 built a{" "}
                 <Link href="https://github.com/martin226/litenet" className="font-medium">
@@ -55,7 +53,6 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <div className="absolute left-0 top-[10px] w-[4px] h-[4px] bg-stone-600 rounded-full transition-all duration-300 group-hover/item:scale-150" />
               <span className="text-stone-600">
                 created an <Link href="https://github.com/martin226/twirl" className="font-medium">AI agent</Link> for turning text/images into 3D-printable models (UofTHacks 2025 Winner)
               </span>
