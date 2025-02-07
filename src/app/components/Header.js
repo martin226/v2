@@ -2,6 +2,7 @@
 
 import HorizontalNav from "./HorizontalNav";
 import { usePathname } from "next/navigation";
+import Link from "./Link";
 
 export default function Header({ className }) {
   const pathname = usePathname();
@@ -27,7 +28,7 @@ export default function Header({ className }) {
   ];
   return (
     <div className="flex justify-between">
-      <h1 className="text-neutral-700 font-semibold">martin sit</h1>
+      <h1 className="text-neutral-700 font-semibold"><Link href="/" isNextLink={true}>martin sit</Link></h1>
       <HorizontalNav links={links} />
     </div>
   );
