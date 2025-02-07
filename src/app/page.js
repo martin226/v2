@@ -9,91 +9,87 @@ import { useState } from "react";
 import ComputerDesktop from "./components/icon/ComputerDesktop";
 
 export default function About() {
-  const [isExpanded, setIsExpanded] = useState(false);
   return (
-    <div className="flex flex-col gap-4">
-      <p>
-        I&apos;m a CS student at the{" "}
-        <Link href="https://uwaterloo.ca">University of Waterloo</Link> who
-        loves building cool things.
-      </p>
-      <p>
-        I&apos;m experienced in Python, JS/TS, and C++, with a lot of experience
-        in full-stack web dev. Recently, I&apos;ve been diving deep into ML,
-        creating projects such as a{" "}
-        <Link href="https://github.com/martin226/litenet">
-          C++ deep learning framework from scratch
-        </Link>
-        .
-      </p>
-      <p>
-        Previously, I worked as an ML Research Intern at{" "}
-        <Link href="https://sunnybrook.ca/research/">
-          Sunnybrook Research Institute
-        </Link>
-        , building deep learning models to accelerate focused ultrasound
-        treatment monitoring.
-      </p>
-      {!isExpanded ? (
-        <div className="flex flex-row justify-between">
-          <span className="text-transparent bg-gradient-to-r bg-clip-text from-neutral-500 to-transparent line-clamp-1">
-            Before that, I was a Research Intern at the University of Waterloo
-            &hellip;{" "}
+    <div className="flex flex-col gap-12 max-w-2xl mx-auto">
+      <ul className="grid gap-1 text-base">
+        <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
+          <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
+          <span className="text-stone-600">
+            incoming SWE Intern @ {" "}
+            <Link href="https://shopify.com" className="font-medium">
+              Shopify
+            </Link> (summer 2025)
           </span>
-          <button
-            className="text-neutral-700 font-medium text-right whitespace-nowrap"
-            onClick={() => setIsExpanded(true)}
-          >
-            continue reading →
-          </button>
-        </div>
-      ) : (
-        <>
-          <p>
-            Before that, I was a Research Intern at the University of Waterloo
-            under the guidance of{" "}
-            <Link href="https://cs.uwaterloo.ca/~dbarrada/">
-              Professor Diogo Barradas
+        </li>
+        <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
+          <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
+          <span className="text-stone-600">
+            cs @ {" "}
+            <Link href="https://uwaterloo.ca" className="font-medium">
+              UWaterloo
             </Link>
-            , building systems to advance censorship-resistant Internet
-            communications.
-          </p>
-          <p>
-            In high school, I led the{" "}
-            <Link href="https://app.staugustinechs.ca">
-              App Development Team
-            </Link>{" "}
-            and grew our mobile app to hundreds of monthly active users. I
-            developed our high school&apos;s{" "}
-            <Link href="https://staugustinechs.ca">website</Link> (and{" "}
-            <Link href="https://app.staugustinechs.ca">
-              mobile app&apos;s website
-            </Link>{" "}
-            too).
-          </p>
-          <p>
-            I was also an organizer of{" "}
-            <Link href="https://www.jamhacks.ca">JAMHacks</Link>, Canada&apos;s
-            largest high school hackathon. I was the head of the Web/Tech team,
-            where among other things, I spearheaded the development of the event
-            website and dashboard used by hundreds of participants.
-          </p>
-          <button
-            className="text-neutral-700 font-medium text-left"
-            onClick={() => setIsExpanded(false)}
-          >
-            ← show less
-          </button>
-        </>
-      )}
+          </span>
+        </li>
+        <li className="group flex flex-col gap-3 pl-4 relative hover:translate-x-1 transition-transform duration-200">
+          <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
+          <span className="text-stone-600 italic font-medium">recently:</span>
+          <ul className="grid gap-1 pl-4">
+            <li className="relative flex items-start gap-4 group/item">
+              <div className="absolute left-0 top-[10px] w-[4px] h-[4px] bg-stone-600 rounded-full transition-all duration-300 group-hover/item:scale-150" />
+              <span className="text-stone-600">
+                shipped a{" "}
+                <Link href="https://jakesresu.me" className="font-medium">
+                  product
+                </Link>{" "}
+                to 3,500+ users (idea → launch in &lt;2 days)
+              </span>
+            </li>
+            <li className="relative flex items-start gap-4 group/item">
+              <div className="absolute left-0 top-[10px] w-[4px] h-[4px] bg-stone-600 rounded-full transition-all duration-300 group-hover/item:scale-150" />
+              <span className="text-stone-600">
+                built a{" "}
+                <Link href="https://github.com/martin226/litenet" className="font-medium">
+                  deep learning framework
+                </Link>{" "}
+                from scratch in C++
+              </span>
+            </li>
+            <li className="relative flex items-start gap-4 group/item">
+              <div className="absolute left-0 top-[10px] w-[4px] h-[4px] bg-stone-600 rounded-full transition-all duration-300 group-hover/item:scale-150" />
+              <span className="text-stone-600">
+                created an <Link href="https://github.com/martin226/twirl" className="font-medium">AI agent</Link> for turning text/images into 3D-printable models (UofTHacks 2025 Winner)
+              </span>
+            </li>
+          </ul>
+        </li>
+        <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
+          <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
+          <span className="text-stone-600">
+            in high school: ML research at{" "}
+            <Link href="https://sunnybrook.ca/research/" className="font-medium">
+              Sunnybrook
+            </Link>, research at{" "}
+            <Link href="https://cs.uwaterloo.ca/~dbarrada/" className="font-medium">
+              UWaterloo
+            </Link>, organized{" "}
+            <Link href="https://www.jamhacks.ca/" className="font-medium">
+              JAMHacks
+            </Link>, led my school's <Link href="https://app.staugustinechs.ca/" className="font-medium">
+              mobile app
+            </Link>
+          </span>
+        </li>
+      </ul>
+
       <NextLink
         href="/projects"
-        className="text-center py-4 rounded-md border border-stone-700 hover:bg-stone-700 hover:text-neutral-200 bg-stone-100 text-neutral-500 transform transition-all duration-300"
+        className="text-center py-4 px-6 rounded-lg border-2 border-stone-400 hover:bg-stone-800 hover:text-white bg-stone-50 text-stone-600 transform transition-all duration-300 font-medium hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
       >
         see what i&apos;ve built{" "}
-        <ComputerDesktop className="size-6 inline align-top" />
+        <ComputerDesktop className="size-5 inline align-top ml-1 transition-transform group-hover:rotate-3" />
       </NextLink>
-      <div className="flex justify-between">
+
+      <div className="flex justify-between mt-4">
         <div className="relative flex-1">
           <Image
             src={Signature}
@@ -102,7 +98,7 @@ export default function About() {
             className="object-contain"
           />
         </div>
-        <div className="w-48 h-48 relative rounded-full border">
+        <div className="w-48 h-48 relative rounded-full border-2 border-stone-200 shadow-lg overflow-hidden">
           <Image
             src={Headshot}
             alt="Martin Sit Headshot"
