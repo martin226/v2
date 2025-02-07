@@ -74,7 +74,7 @@ export default function About() {
             </Link>, organized{" "}
             <Link href="https://www.jamhacks.ca/" className="font-medium">
               JAMHacks
-            </Link>, led my school's <Link href="https://app.staugustinechs.ca/" className="font-medium">
+            </Link>, led my school&apos;s <Link href="https://app.staugustinechs.ca/" className="font-medium">
               mobile app
             </Link>
           </span>
