@@ -7,6 +7,7 @@ import MakeItJakesImage from "../assets/projects/makeitjakes.gif";
 import TwirlImage from "../assets/projects/twirl.png";
 import LayoffEvadersImage from "../assets/projects/layoffevaders.png";
 import LiteNetImage from "../assets/projects/litenet.gif";
+import KaleidoscopeImage from "../assets/projects/kaleidoscope.png";
 import SensaiImage from "../assets/projects/sensai.png";
 import UptoneImage from "../assets/projects/uptone.png";
 import CredibilityImage from "../assets/projects/credibility.png";
@@ -83,6 +84,17 @@ export default function Home() {
       imageAlt: "LiteNet terminal interface",
       technologies: ["C++"],
       github: "https://github.com/martin226/litenet",
+    },
+    {
+      title: "Kaleidoscope",
+      href: "https://partner.projectboard.world/ysc/project/emotion-and-irony-detection-for-individuals-with-autism-spectrum-disorder-using-deep-neural-networks-dwvwyv",
+      description:
+        "a browser extension providing emotion and irony detection in one click for individuals with autism spectrum disorder.",
+      image: KaleidoscopeImage,
+      imageAlt: "Kaleidoscope browser extension",
+      technologies: ["Python", "PyTorch", "HuggingFace", "WebExtensions", "Flask"],
+      github: "https://github.com/martin226/kaleidoscope",
+      demo: "https://partner.projectboard.world/ysc/project/emotion-and-irony-detection-for-individuals-with-autism-spectrum-disorder-using-deep-neural-networks-dwvwyv",
     },
     {
       title: "Credibility",
