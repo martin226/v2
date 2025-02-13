@@ -36,7 +36,7 @@ export default function Footer({ className }) {
   return (
     <footer className={`flex flex-col gap-4 ${className}`}>
       <hr className="border-b border-neutral-200" />
-      <div className="flex-col sm:flex-row flex justify-between gap-4">
+      <div className="flex flex-row justify-between gap-4">
         <div className="flex flex-wrap gap-4">
           {links.map((link, index) => (
             <a
@@ -48,8 +48,8 @@ export default function Footer({ className }) {
             >
               {link.icon && (
                 <>
-                  <link.icon className="w-5 h-5 transition-transform duration-200 ease-out group-hover:scale-110" />
-                  <span className="w-0 overflow-hidden group-hover:w-auto group-hover:ml-2 opacity-0 group-hover:opacity-100 transition-all duration-200 ease-out">
+                  <link.icon className="w-5 h-5 hover:scale-110 md:hover:scale-110 transition-transform duration-200 ease-out" />
+                  <span className="hidden md:inline-block md:w-0 md:overflow-hidden md:group-hover:w-auto md:group-hover:ml-2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 ease-out">
                     {link.name}
                   </span>
                 </>
