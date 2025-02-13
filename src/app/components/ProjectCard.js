@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Github from "./icon/Github";
-import ArrowTopRightOnSquare from "./icon/ArrowTopRightOnSquare";
+import { Github, SquareArrowOutUpRight } from "lucide-react";
 
 const shimmer = `
 <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -76,7 +75,7 @@ export default function ProjectCard({
                   className="py-2 px-4 text-sm font-medium text-center text-neutral-700 bg-neutral-50 rounded-lg hover:bg-neutral-200 transform transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md border border-neutral-200 whitespace-nowrap"
                 >
                   check it out
-                  <ArrowTopRightOnSquare className="size-4 inline align-middle ml-2" />
+                  <SquareArrowOutUpRight className="size-4 inline align-middle ml-2" />
                 </a>
               )}
             </div>

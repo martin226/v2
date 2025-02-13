@@ -6,7 +6,8 @@ import Headshot from "@/app/assets/headshot.png";
 import Signature from "@/app/assets/signature.png";
 import Image from "next/image";
 import { useState } from "react";
-import ComputerDesktop from "./components/icon/ComputerDesktop";
+// import ComputerDesktop from "./components/icon/ComputerDesktop";
+import { GalleryHorizontalEnd } from "lucide-react";
 
 export default function About() {
   return (
@@ -83,7 +84,7 @@ export default function About() {
         className="text-center py-4 px-6 rounded-lg border-2 border-stone-400 hover:bg-stone-800 hover:text-white bg-stone-50 text-stone-600 transform transition-all duration-300 font-medium hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
       >
         see what i&apos;ve built{" "}
-        <ComputerDesktop className="size-5 inline align-top ml-1 transition-transform group-hover:rotate-3" />
+        <GalleryHorizontalEnd className="size-5 inline align-top ml-1 transition-transform group-hover:rotate-3" />
       </NextLink>
 
       <div className="flex justify-between mt-4">

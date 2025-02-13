@@ -20,7 +20,7 @@ import COVID19TrackerImage from "../assets/projects/covid19-tracker.png";
 import EcoRewardsImage from "../assets/projects/ecorewards.png";
 
 import { useState } from "react";
-import MagnifyingGlass from "../components/icon/MagnifyingGlass";
+import { Search } from "lucide-react";
 
 export default function Home() {
   const projects = [
@@ -227,7 +227,7 @@ export default function Home() {
   return (
     <>
       <div className="relative">
-        <MagnifyingGlass className="absolute top-2.5 left-3 size-6 text-stone-400" />
+        <Search className="absolute top-2.5 left-3 size-6 text-stone-400" />
         <input
           type="text"
           placeholder="search for a project, technology, etc."
