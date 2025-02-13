@@ -1,4 +1,4 @@
-import { Twitter, Linkedin, Github, FileText, Mail } from "lucide-react";
+import { Twitter, Linkedin, Github, FileText, Mail, CodeXml } from "lucide-react";
 
 export default function Footer({ className }) {
   const links = [
@@ -28,8 +28,9 @@ export default function Footer({ className }) {
       icon: Mail
     },
     { 
-      name: "</>", 
-      href: "https://github.com/martin226/v2"
+      name: "repo", 
+      href: "https://github.com/martin226/v2",
+      icon: CodeXml
     },
   ];
 
@@ -48,8 +49,8 @@ export default function Footer({ className }) {
             >
               {link.icon && (
                 <>
-                  <link.icon className="w-5 h-5 hover:scale-110 md:hover:scale-110 transition-transform duration-200 ease-out" />
-                  <span className="hidden md:inline-block md:w-0 md:overflow-hidden md:group-hover:w-auto md:group-hover:ml-2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-200 ease-out">
+                  <link.icon className="w-5 h-5 hover:scale-110 md:hover:scale-110 transition-transform duration-500 ease-out" />
+                  <span className="hidden md:inline-block md:w-0 md:overflow-hidden md:group-hover:w-auto md:group-hover:ml-2 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 ease-out">
                     {link.name}
                   </span>
                 </>
