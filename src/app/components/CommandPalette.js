@@ -161,17 +161,25 @@ export default function CommandPalette() {
       } else if (key === "c") {
         e.preventDefault();
         runCommand(() => window.open("https://github.com/martin226/v2", "_blank"));
-      } else if (pathname === "/projects" && /^[1-5]$/.test(key)) {
-        e.preventDefault();
-        const project = projects[parseInt(key) - 1];
-        if (project) {
-          runCommand(() => window.open(project.href, "_blank"));
+      } else if (pathname === "/projects") {
+        // Check for Digit1 through Digit5
+        const match = e.code.match(/^Digit([1-5])$/);
+        if (match) {
+          e.preventDefault();
+          const num = parseInt(match[1]);
+          const project = projects[num - 1];
+          if (project) {
+            runCommand(() => window.open(project.href, "_blank"));
+          }
         }
-      } else if (pathname.startsWith("/writing") && /^[1-9]$/.test(key)) {
-        e.preventDefault();
-        const post = posts[parseInt(key) - 1];
-        if (post) {
-          runCommand(() => router.push(post.href));
+      } else if (pathname.startsWith("/writing")) {
+        // Check for Digit1
+        if (e.code === "Digit1") {
+          e.preventDefault();
+          const post = posts[0];
+          if (post) {
+            runCommand(() => router.push(post.href));
+          }
         }
       }
     };
