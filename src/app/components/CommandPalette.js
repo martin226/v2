@@ -5,6 +5,7 @@ import { Command } from "cmdk";
 import { useRouter, usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Search, FileText, Home, FolderGit2, PenLine, Github, Linkedin, ExternalLink, Twitter, Mail, CodeXml, Lightbulb } from "lucide-react";
+import useMobileDevice from "../hooks/useMobileDevice";
 
 const projects = [
   {
@@ -48,6 +49,7 @@ export default function CommandPalette() {
   const [isModifierPressed, setIsModifierPressed] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const isMobileDevice = useMobileDevice();
 
   // Detect OS on mount
   useEffect(() => {
@@ -192,6 +194,11 @@ export default function CommandPalette() {
     setOpen(false);
     command();
   };
+
+  // If mobile device, don't render the command palette
+  if (isMobileDevice) {
+    return null;
+  }
 
   const Shortcut = ({ children }) => (
     <div className="flex items-center gap-1 ml-auto text-xs text-stone-500">
