@@ -12,7 +12,7 @@ export default function Link({
   const baseStyles = `
     relative
     inline-flex items-center
-    text-stone-700
+    text-stone-700 dark:text-stone-300
     transition-all duration-300
     ${!isActive && `
       after:absolute
@@ -20,18 +20,18 @@ export default function Link({
       after:bottom-0
       after:h-[1px]
       after:w-full
-      after:bg-stone-300
+      after:bg-stone-300 dark:after:bg-stone-600
       after:z-[1]
       before:absolute
       before:left-0
       before:bottom-0
       before:h-[1px]
       before:w-full
-      before:bg-stone-800
+      before:bg-stone-800 dark:before:bg-stone-300
       before:opacity-0
       before:z-[2]
       hover:before:opacity-100
-      hover:text-stone-900
+      hover:text-stone-900 dark:hover:text-stone-100
       hover:before:[animation:sweep_2s_ease-in-out_infinite]
     `}
     ${className}

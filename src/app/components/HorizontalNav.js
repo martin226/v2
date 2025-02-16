@@ -1,24 +1,21 @@
+"use client";
+
 import Link from "./Link";
 
-export default function HorizontalNav({ className, links }) {
+export default function HorizontalNav({ links }) {
   return (
-    <ul className={`inline-flex ${className}`}>
+    <nav className="flex items-center gap-2 sm:gap-4 md:gap-6">
       {links.map((link, index) => (
-        <li
+        <Link
           key={index}
-          className={`inline-block ${
-            index > 0 ? "before:content-['•'] before:mx-2" : ""
-          }`}
+          href={link.href}
+          isActive={link.isActive}
+          isNextLink={link.isNextLink}
+          className={`text-sm ${link.isActive ? "text-stone-900 dark:text-stone-100" : ""}`}
         >
-          <Link
-            href={link.href}
-            isActive={link.isActive}
-            isNextLink={link.isNextLink}
-          >
-            {link.name}
-          </Link>
-        </li>
+          {link.name}
+        </Link>
       ))}
-    </ul>
+    </nav>
   );
 }

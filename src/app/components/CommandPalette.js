@@ -212,16 +212,16 @@ export default function CommandPalette() {
   }
 
   const Shortcut = ({ children }) => (
-    <div className="flex items-center gap-1 ml-auto text-xs text-stone-500">
+    <div className="flex text-xs items-center gap-1 ml-auto text-stone-500 dark:text-stone-500">
       {!isModifierPressed && (
         <>
-          <kbd className="px-1.5 py-0.5 rounded bg-stone-100 font-mono">
+          <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">
             shift
           </kbd>
           <span>+</span>
         </>
       )}
-      <kbd className="px-1.5 py-0.5 rounded bg-stone-100 font-mono">
+      <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">
         {children}
       </kbd>
     </div>
@@ -233,7 +233,7 @@ export default function CommandPalette() {
         <Dialog.Overlay className="fixed inset-0 bg-black/50 animate-fade-in z-40" />
         <Dialog.Content className="fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-[500px] p-3 animate-slide-down z-50">
           <Command 
-            className="w-full rounded-xl border border-stone-300 bg-white shadow-2xl overflow-hidden"
+            className="w-full rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-900 shadow-2xl overflow-hidden"
             loop={true}
             shouldFilter={true}
             onClick={(e) => {
@@ -245,21 +245,22 @@ export default function CommandPalette() {
             }}
           >
             {getCurrentSection() && (
-              <div className="px-5 py-6 border-b border-stone-200 flex items-center gap-3">
-                <div className="p-1.5 bg-stone-100 rounded-lg">
+              <div className="px-5 py-6 border-b border-stone-200 dark:border-stone-700 flex items-center gap-3">
+                <div className="p-1.5 bg-stone-100 dark:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400">
                   {getCurrentSection().icon}
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-medium text-stone-900">{getCurrentSection().name}</h2>
-                  <p className="text-sm text-stone-500">{getCurrentSection().description}</p>
+                  <h2 className="font-medium text-stone-900 dark:text-stone-100">{getCurrentSection().name}</h2>
+                  <p className="text-sm text-stone-500 dark:text-stone-400">{getCurrentSection().description}</p>
                 </div>
               </div>
             )}
-            <div className="flex items-center border-b border-stone-300 px-4 py-4">
-              <Search className="h-4 w-4 text-stone-500" />
+
+            <div className="flex items-center border-b border-stone-300 dark:border-stone-700 px-4 py-4">
+              <Search className="h-4 w-4 text-stone-500 dark:text-stone-400" />
               <Command.Input
                 placeholder="Search for actions..."
-                className="flex-1 w-full bg-transparent px-3 text-sm text-stone-800 placeholder:text-stone-500 focus:outline-none"
+                className="flex-1 w-full bg-transparent px-3 text-sm text-stone-800 dark:text-stone-200 placeholder:text-stone-500 dark:placeholder:text-stone-500 focus:outline-none"
                 onBlur={(e) => {
                   // Only close if clicking outside the command palette dialog
                   const commandDialog = e.currentTarget.closest('[role="dialog"]');
@@ -270,15 +271,20 @@ export default function CommandPalette() {
                 autoFocus
               />
             </div>
+
             <Command.List className="max-h-[300px] overflow-y-auto px-3 py-4">
+              <Command.Empty className="px-5 py-4 text-sm text-stone-500 dark:text-stone-400">
+                No results found.
+              </Command.Empty>
+
               {pathname === "/projects" && (
-                <Command.Group heading="Featured Projects" className="px-2">
+                <Command.Group heading="Featured Projects" className="px-2 text-stone-500 dark:text-stone-400">
                   {projects.map((project) => (
                     <Command.Item
                       key={project.href}
                       value={project.title.toLowerCase()}
                       onSelect={() => runCommand(() => window.open(project.href, "_blank"))}
-                      className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                      className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                     >
                       <ExternalLink className="h-4 w-4" />
                       <span className="flex-1">{project.title}</span>
@@ -289,13 +295,13 @@ export default function CommandPalette() {
               )}
 
               {pathname.startsWith("/writing") && (
-                <Command.Group heading="Blog Posts" className="px-2">
+                <Command.Group heading="Blog Posts" className="px-2 text-stone-500 dark:text-stone-400">
                   {posts.map((post) => (
                     <Command.Item
                       key={post.href}
                       value={post.title.toLowerCase()}
                       onSelect={() => runCommand(() => router.push(post.href))}
-                      className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                      className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                     >
                       <FileText className="h-4 w-4" />
                       <span className="flex-1">{post.title}</span>
@@ -305,11 +311,11 @@ export default function CommandPalette() {
                 </Command.Group>
               )}
 
-              <Command.Group heading="Navigation" className="px-2">
+              <Command.Group heading="Navigation" className="px-2 text-stone-500 dark:text-stone-400">
                 <Command.Item
                   value="home"
                   onSelect={() => runCommand(() => router.push("/"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <Home className="h-4 w-4" />
                   <span className="flex-1">Go to Home</span>
@@ -318,7 +324,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="projects"
                   onSelect={() => runCommand(() => router.push("/projects"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <FolderGit2 className="h-4 w-4" />
                   <span className="flex-1">Go to Projects</span>
@@ -327,7 +333,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="writing"
                   onSelect={() => runCommand(() => router.push("/writing"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <PenLine className="h-4 w-4" />
                   <span className="flex-1">Go to Writing</span>
@@ -335,11 +341,11 @@ export default function CommandPalette() {
                 </Command.Item>
               </Command.Group>
 
-              <Command.Group heading="Links" className="px-2">
+              <Command.Group heading="Links" className="px-2 text-stone-500 dark:text-stone-400">
                 <Command.Item
                   value="twitter"
                   onSelect={() => runCommand(() => window.open("https://x.com/_martinsit", "_blank"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <Twitter className="h-4 w-4" />
                   <span className="flex-1">X Profile</span>
@@ -348,7 +354,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="linkedin"
                   onSelect={() => runCommand(() => window.open("https://www.linkedin.com/in/martin-sit/", "_blank"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <Linkedin className="h-4 w-4" />
                   <span className="flex-1">LinkedIn Profile</span>
@@ -357,7 +363,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="github"
                   onSelect={() => runCommand(() => window.open("https://github.com/martin226", "_blank"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <Github className="h-4 w-4" />
                   <span className="flex-1">GitHub Profile</span>
@@ -366,7 +372,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="resume"
                   onSelect={() => runCommand(() => window.open("/resume.pdf", "_blank"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <FileText className="h-4 w-4" />
                   <span className="flex-1">Resume</span>
@@ -375,7 +381,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="email"
                   onSelect={() => runCommand(() => window.open("mailto:martinsit288@gmail.com", "_blank"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <Mail className="h-4 w-4" />
                   <span className="flex-1">Email</span>
@@ -384,7 +390,7 @@ export default function CommandPalette() {
                 <Command.Item
                   value="source"
                   onSelect={() => runCommand(() => window.open("https://github.com/martin226/v2", "_blank"))}
-                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 rounded hover:bg-stone-100 cursor-pointer data-[selected=true]:bg-stone-100"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
                 >
                   <CodeXml className="h-4 w-4" />
                   <span className="flex-1">Website Repository</span>
@@ -392,17 +398,17 @@ export default function CommandPalette() {
                 </Command.Item>
               </Command.Group>
             </Command.List>
-            <div className="border-t border-stone-200 px-3 py-4">
-              <div className="flex items-center justify-between text-xs text-stone-500">
+            <div className="border-t border-stone-200 dark:border-stone-700 px-3 py-4">
+              <div className="flex items-center justify-between text-stone-500 dark:text-stone-400 text-xs">
                 <div className="flex items-center gap-2">
                   <Lightbulb className="h-3 w-3" />
                   <span>Type</span>
-                  <kbd className="px-1.5 py-0.5 rounded bg-stone-100 font-mono">↵</kbd>
+                  <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">↵</kbd>
                   <span>to select</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span>Press</span>
-                  <kbd className="px-1.5 py-0.5 rounded bg-stone-100 font-mono">esc</kbd>
+                  <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">esc</kbd>
                   <span>to close</span>
                 </div>
               </div>

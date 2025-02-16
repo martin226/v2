@@ -32,7 +32,7 @@ export default function ProjectCard({
   className,
 }) {
   return (
-    <div className={`group bg-neutral-100 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${className}`}>
+    <div className={`group bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${className}`}>
       <a href={href} target="_blank" rel="noopener noreferrer" className="block overflow-hidden">
         <div className="relative">
           <Image
@@ -50,46 +50,44 @@ export default function ProjectCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-800 font-bold text-2xl hover:text-neutral-600 transition-colors duration-200 block"
+              className="text-neutral-800 dark:text-neutral-200 font-bold text-2xl hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors duration-200 block"
             >
               {title}
             </a>
-            <p className="text-neutral-600 mt-2 leading-relaxed">{description}</p>
-          </div>
-          {(github || demo) && (
-            <div className="flex flex-wrap gap-2 justify-end">
-              {github && (
-                <a
-                  href={github}
-                  target="_blank"
-                  className="py-2 px-4 text-sm font-medium text-center text-neutral-200 bg-stone-800 rounded-lg hover:bg-stone-700 transform transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md whitespace-nowrap"
+            <p className="text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">{description}</p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {technologies.map((tech, index) => (
+                <span
+                  key={index}
+                  className="text-xs px-2 py-1 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300"
                 >
-                  <Github className="size-4 inline align-middle mr-2" />
-                  github repo
-                </a>
-              )}
-              {demo && (
-                <a
-                  href={demo}
-                  target="_blank"
-                  className="py-2 px-4 text-sm font-medium text-center text-neutral-700 bg-neutral-50 rounded-lg hover:bg-neutral-200 transform transition-all duration-300 hover:-translate-y-0.5 shadow-sm hover:shadow-md border border-neutral-200 whitespace-nowrap"
-                >
-                  check it out
-                  <SquareArrowOutUpRight className="size-4 inline align-middle ml-2" />
-                </a>
-              )}
+                  {tech}
+                </span>
+              ))}
             </div>
-          )}
-        </div>
-        <div className="flex flex-wrap gap-2 mt-4">
-          {technologies.map((technology, index) => (
-            <span
-              key={index}
-              className="px-3 py-1 bg-neutral-50/80 text-neutral-600 rounded-full text-xs font-medium border border-neutral-200/80"
-            >
-              {technology}
-            </span>
-          ))}
+          </div>
+          <div className="flex gap-2">
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+            )}
+            {demo && (
+              <a
+                href={demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+              >
+                <SquareArrowOutUpRight className="w-5 h-5" />
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>

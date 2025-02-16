@@ -2,48 +2,43 @@ import { Twitter, Linkedin, Github, FileText, Mail, CodeXml } from "lucide-react
 
 export default function Footer({ className }) {
   const links = [
-    { 
-      name: "x", 
+    {
+      name: "x",
       href: "https://x.com/_martinsit",
-      icon: Twitter
+      icon: Twitter,
     },
-    { 
-      name: "linkedin", 
+    {
+      name: "linkedin",
       href: "https://www.linkedin.com/in/martin-sit/",
-      icon: Linkedin
+      icon: Linkedin,
     },
-    { 
-      name: "github", 
+    {
+      name: "github",
       href: "https://github.com/martin226",
-      icon: Github
+      icon: Github,
     },
-    { 
-      name: "resume", 
-      href: "/resume.pdf",
-      icon: FileText
-    },
-    { 
-      name: "email", 
+    {
+      name: "email",
       href: "mailto:martinsit288@gmail.com",
-      icon: Mail
+      icon: Mail,
     },
-    { 
-      name: "repo", 
+    {
+      name: "repo",
       href: "https://github.com/martin226/v2",
-      icon: CodeXml
-    },
+      icon: CodeXml,
+    }
   ];
 
   return (
-    <footer className={`flex flex-col gap-4 ${className}`}>
-      <hr className="border-b border-neutral-200" />
+    <footer className={`flex flex-col gap-4 text-sm text-stone-500 dark:text-stone-400 ${className}`}>
+      <hr className="border-b border-neutral-200 dark:border-neutral-800" />
       <div className="flex flex-row justify-between gap-4">
         <div className="flex flex-wrap gap-4">
           {links.map((link, index) => (
             <a
               key={index}
               href={link.href}
-              className="group flex items-center hover:text-neutral-800"
+              className="group flex items-center hover:text-neutral-800 dark:hover:text-neutral-200"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -62,7 +57,7 @@ export default function Footer({ className }) {
           ))}
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <a href="https://cs.uwatering.com/#https://martinsit.ca/?nav=prev">
+          <a href="https://cs.uwatering.com/#https://martinsit.ca/?nav=prev" className="text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200">
             ←
           </a>
           <a
@@ -72,10 +67,10 @@ export default function Footer({ className }) {
             <img
               src="https://cs.uwatering.com/icon.black.svg"
               alt="CS Webring"
-              style={{ width: "24px", height: "auto", opacity: 0.8 }}
+              className="w-6 h-auto opacity-80 dark:invert"
             />
           </a>
-          <a href="https://cs.uwatering.com/#https://martinsit.ca/?nav=next">
+          <a href="https://cs.uwatering.com/#https://martinsit.ca/?nav=next" className="text-stone-500 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200">
             →
           </a>
         </div>

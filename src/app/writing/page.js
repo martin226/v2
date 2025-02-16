@@ -26,15 +26,15 @@ export default async function Writing() {
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
   return (
     <>
-      <ul className="list-disc list-inside space-y-2">
+      <ul className="list-disc list-inside space-y-2 text-stone-600 dark:text-stone-400">
         {posts.map(({ title, date, slug }) => (
-          <li className="flex justify-between" key={slug}>
-            <span className="font-semibold">
+          <li className="flex justify-between items-center" key={slug}>
+            <span className="font-semibold text-stone-800 dark:text-stone-200">
               <Link href={`/writing/${slug}`} isNextLink={true}>
                 {title}
               </Link>
             </span>
-            <time>
+            <time className="text-stone-500 dark:text-stone-500 text-sm">
               {new Date(date).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "short",
