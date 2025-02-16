@@ -15,7 +15,7 @@ import { GalleryHorizontalEnd } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="flex flex-col gap-12 max-w-2xl mx-auto">
+    <div className="flex flex-col max-w-2xl mx-auto">
       <ul className="grid gap-1 text-base">
         <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
@@ -103,13 +103,13 @@ export default function About() {
 
       <NextLink
         href="/projects"
-        className="text-center py-4 px-6 rounded-lg border-2 border-stone-400 hover:bg-stone-800 hover:text-white bg-stone-50 text-stone-600 transform transition-all duration-300 font-medium hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
+        className="text-center mt-4 py-4 px-6 rounded-lg border-2 border-stone-400 hover:bg-stone-800 hover:text-white bg-stone-50 text-stone-600 transform transition-all duration-300 font-medium hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-md"
       >
         see what i&apos;ve built{" "}
         <GalleryHorizontalEnd className="size-5 inline align-top ml-1 transition-transform group-hover:rotate-3" />
       </NextLink>
 
-      <div className="flex items-center justify-center gap-2 text-stone-600 -mt-8 -mb-8">
+      <div className="flex items-center justify-center gap-2 text-stone-600 mt-4">
         <span>or, </span>
         <span>→</span>
         <Link href="/resume.pdf" className="font-medium">
