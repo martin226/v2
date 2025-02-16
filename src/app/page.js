@@ -109,6 +109,14 @@ export default function About() {
         <GalleryHorizontalEnd className="size-5 inline align-top ml-1 transition-transform group-hover:rotate-3" />
       </NextLink>
 
+      <div className="flex items-center justify-center gap-2 text-stone-600 -mt-8 -mb-8">
+        <span>or, </span>
+        <span>→</span>
+        <Link href="/resume.pdf" className="font-medium">
+          view my resume
+        </Link>
+      </div>
+
       <div className="flex justify-between mt-4">
         <div className="relative flex-1">
           <Image
