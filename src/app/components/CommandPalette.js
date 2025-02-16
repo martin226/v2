@@ -56,6 +56,13 @@ export default function CommandPalette() {
     setIsMac(navigator.platform.toLowerCase().includes('mac'));
   }, []);
 
+  // Handle opening the palette and setting localStorage
+  const handleOpen = () => {
+    setOpen(true);
+    localStorage.setItem('hasOpenedCommandPalette', 'true');
+    window.dispatchEvent(new CustomEvent('command-palette-opened'));
+  };
+
   // Track modifier key state
   useEffect(() => {
     if (!open) return;
@@ -85,10 +92,27 @@ export default function CommandPalette() {
 
   // Listen for custom event to open palette
   useEffect(() => {
-    const handleCustomOpen = () => setOpen(true);
+    const handleCustomOpen = () => handleOpen();
     window.addEventListener('open-command-palette', handleCustomOpen);
     return () => window.removeEventListener('open-command-palette', handleCustomOpen);
   }, []);
+
+  // Toggle the menu when ⌘K is pressed
+  useEffect(() => {
+    const down = (e) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        if (!open) {
+          handleOpen();
+        } else {
+          setOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, [open]);
 
   // Get current section info
   const getCurrentSection = () => {
@@ -112,19 +136,6 @@ export default function CommandPalette() {
       };
     }
   };
-
-  // Toggle the menu when ⌘K is pressed
-  useEffect(() => {
-    const down = (e) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
-      }
-    };
-
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
 
   // Handle keyboard shortcuts when palette is open
   useEffect(() => {
