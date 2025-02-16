@@ -61,7 +61,7 @@ export default function Header({ className }) {
         <HorizontalNav links={links} />
         {!isMobileDevice && (
           <div className="relative">
-            {showArrow && <CurvedArrow className="hidden lg:block absolute -top-16 -right-28" />}
+            {showArrow && <CurvedArrow className="hidden lg:block absolute -top-10 -right-28" />}
             <button
               onClick={openCommandPalette}
               className="hidden sm:flex items-center gap-1 text-xs text-stone-500 bg-stone-50 px-2 py-1 rounded-lg border border-stone-200 hover:bg-stone-100 hover:border-stone-300 transition-colors duration-200"
