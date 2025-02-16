@@ -4,9 +4,13 @@ import Link from "./components/Link";
 import NextLink from "next/link";
 import Headshot from "@/app/assets/headshot.png";
 import Signature from "@/app/assets/signature.png";
+import ShopifyLogo from "@/app/components/icon/Shopify.png";
+import UWaterlooLogo from "@/app/components/icon/UWaterloo.png";
+import SunnybrookLogo from "@/app/components/icon/Sunnybrook.png";
+import JAMHacksLogo from "@/app/components/icon/JAMHacks.png";
+import StAugustineLogo from "@/app/components/icon/StAugustine.png";
 import Image from "next/image";
 import { useState } from "react";
-// import ComputerDesktop from "./components/icon/ComputerDesktop";
 import { GalleryHorizontalEnd } from "lucide-react";
 
 export default function About() {
@@ -17,18 +21,24 @@ export default function About() {
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
           <span className="text-stone-600">
             incoming SWE Intern @ {" "}
-            <Link href="https://shopify.com" className="font-medium">
-              Shopify
-            </Link> (summer 2025)
+            <span className="inline-flex items-baseline gap-1">
+              <Image src={ShopifyLogo} alt="Shopify Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Link href="https://shopify.com" className="font-medium">
+                Shopify
+              </Link>
+            </span> (summer 2025)
           </span>
         </li>
         <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
           <span className="text-stone-600">
             cs @ {" "}
-            <Link href="https://uwaterloo.ca" className="font-medium">
-              UWaterloo
-            </Link>
+            <span className="inline-flex items-baseline gap-1">
+              <Image src={UWaterlooLogo} alt="UWaterloo Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Link href="https://uwaterloo.ca" className="font-medium">
+                UWaterloo
+              </Link>
+            </span>
           </span>
         </li>
         <li className="group flex flex-col gap-3 pl-4 relative hover:translate-x-1 transition-transform duration-200">
@@ -64,17 +74,29 @@ export default function About() {
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
           <span className="text-stone-600">
             in high school: ML research at{" "}
-            <Link href="https://sunnybrook.ca/research/" className="font-medium">
-              Sunnybrook
-            </Link>, research at{" "}
-            <Link href="https://cs.uwaterloo.ca/~dbarrada/" className="font-medium">
-              UWaterloo
-            </Link>, organized{" "}
-            <Link href="https://www.jamhacks.ca/" className="font-medium">
-              JAMHacks
-            </Link>, led my school&apos;s <Link href="https://app.staugustinechs.ca/" className="font-medium">
-              mobile app
-            </Link>
+            <span className="inline-flex items-baseline gap-1">
+              <Image src={SunnybrookLogo} alt="Sunnybrook Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Link href="https://sunnybrook.ca/research/" className="font-medium">
+                Sunnybrook
+              </Link>
+            </span>, research at{" "}
+            <span className="inline-flex items-baseline gap-1">
+              <Image src={UWaterlooLogo} alt="UWaterloo Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Link href="https://cs.uwaterloo.ca/~dbarrada/" className="font-medium">
+                UWaterloo
+              </Link>
+            </span>, organized{" "}
+            <span className="inline-flex items-baseline gap-1">
+              <Image src={JAMHacksLogo} alt="JAMHacks Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Link href="https://www.jamhacks.ca/" className="font-medium">
+                JAMHacks
+              </Link>
+            </span>, led my school&apos;s <span className="inline-flex items-baseline gap-1">
+              <Image src={StAugustineLogo} alt="St. Augustine Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Link href="https://app.staugustinechs.ca/" className="font-medium">
+                mobile app
+              </Link>
+            </span>
           </span>
         </li>
       </ul>
