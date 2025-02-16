@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useRouter, usePathname } from "next/navigation";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Search, FileText, Home, FolderGit2, PenLine, Github, Linkedin, ExternalLink, Twitter, Mail, CodeXml, Lightbulb } from "lucide-react";
+import { Search, FileText, Home, FolderGit2, PenLine, Github, Linkedin, ExternalLink, Twitter, Mail, CodeXml, Lightbulb, Sun, Moon } from "lucide-react";
 import useMobileDevice from "../hooks/useMobileDevice";
+import { useTheme } from "./ThemeProvider";
 
 const projects = [
   {
@@ -50,6 +51,7 @@ export default function CommandPalette() {
   const router = useRouter();
   const pathname = usePathname();
   const isMobileDevice = useMobileDevice();
+  const { theme, toggleTheme } = useTheme();
 
   // Detect OS on mount
   useEffect(() => {
@@ -174,6 +176,9 @@ export default function CommandPalette() {
       } else if (key === "c") {
         e.preventDefault();
         runCommand(() => window.open("https://github.com/martin226/v2", "_blank"));
+      } else if (key === "t") {
+        e.preventDefault();
+        runCommand(() => toggleTheme());
       } else if (pathname === "/projects") {
         // Check for Digit1 through Digit5
         const match = e.code.match(/^Digit([1-5])$/);
@@ -397,6 +402,19 @@ export default function CommandPalette() {
                   <Shortcut>C</Shortcut>
                 </Command.Item>
               </Command.Group>
+
+              <Command.Group heading="Other" className="px-2 text-stone-500 dark:text-stone-400">
+                <Command.Item
+                  value="toggle theme dark mode light mode"
+                  onSelect={() => runCommand(() => toggleTheme())}
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-stone-600 dark:text-stone-400 rounded hover:bg-stone-100 dark:hover:bg-stone-800 cursor-pointer data-[selected=true]:bg-stone-100 dark:data-[selected=true]:bg-stone-800"
+                >
+                  {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                  <span className="flex-1">Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode</span>
+                  <Shortcut>T</Shortcut>
+                </Command.Item>
+              </Command.Group>
+
             </Command.List>
             <div className="border-t border-stone-200 dark:border-stone-700 px-3 py-4">
               <div className="flex items-center justify-between text-stone-500 dark:text-stone-400 text-xs">
