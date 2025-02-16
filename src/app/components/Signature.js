@@ -6,6 +6,7 @@ import { RotateCcw } from "lucide-react"
 
 export default function Component() {
   const [key, setKey] = useState(0)
+  const delays = [0, 0.5, 1, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3]
 
   return (
     <div className="flex flex-col items-end gap-2">
@@ -42,17 +43,28 @@ export default function Component() {
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{
                 pathLength: {
-                  duration: 2,
+                  duration: 1,
                   ease: "easeInOut",
-                  delay: i * 0.25 - 0.25
+                  delay: delays[i] - 0.25
                 },
                 opacity: {
                   duration: 0,
-                  delay: i * 0.25
+                  delay: delays[i]
                 }
               }}
             />
           ))}
+          <motion.path
+            d="M 2 65 C 50 65, 100 62, 284 62"
+            strokeWidth="4"
+            strokeLinecap="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.2 }}
+            transition={{
+              pathLength: { duration: 1.5, ease: "easeInOut", delay: 3.25 },
+              opacity: { duration: 0.5, delay: 3.25 }
+            }}
+          />
         </g>
       </motion.svg>
       <motion.button 
