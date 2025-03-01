@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Martin Sit",
+  metadataBase: new URL("https://martinsit.ca"),
 };
 
 export default function RootLayout({ children }) {
