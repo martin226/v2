@@ -18,8 +18,11 @@
     "framer-motion": "^12.4.3",
     "lucide-react": "^0.475.0",
     "next": "14.2.6",
+    "prismjs": "^1.29.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-tweet": "^3.2.2",
+    "rehype-prism-plus": "^2.0.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",

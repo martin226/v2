@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Prism.js syntax highlighting styles */
+@import "./styles/prism.css";
+
 /* Scrollbar styles */
 @layer base {
   /* For Webkit browsers (Chrome, Safari) */

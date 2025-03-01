@@ -1,0 +1,196 @@
+/**
+ * Custom Prism.js theme that matches the site's color scheme
+ * Light and dark mode compatible
+ */
+
+/* Light mode */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #44403c;
+  background: none;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f5f4;
+}
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #78716c;
+}
+
+.token.punctuation {
+  color: #57534e;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #a21caf;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #15803d;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #0369a1;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #0284c7;
+}
+
+.token.function,
+.token.class-name {
+  color: #ca8a04;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #d97706;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Dark mode */
+.dark code[class*="language-"],
+.dark pre[class*="language-"] {
+  color: #f5f5f4;
+}
+
+.dark :not(pre) > code[class*="language-"],
+.dark pre[class*="language-"] {
+  background: #292524;
+}
+
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.doctype,
+.dark .token.cdata {
+  color: #a8a29e;
+}
+
+.dark .token.punctuation {
+  color: #d6d3d1;
+}
+
+.dark .token.property,
+.dark .token.tag,
+.dark .token.boolean,
+.dark .token.number,
+.dark .token.constant,
+.dark .token.symbol,
+.dark .token.deleted {
+  color: #e879f9;
+}
+
+.dark .token.selector,
+.dark .token.attr-name,
+.dark .token.string,
+.dark .token.char,
+.dark .token.builtin,
+.dark .token.inserted {
+  color: #4ade80;
+}
+
+.dark .token.operator,
+.dark .token.entity,
+.dark .token.url,
+.dark .language-css .token.string,
+.dark .style .token.string {
+  color: #38bdf8;
+}
+
+.dark .token.atrule,
+.dark .token.attr-value,
+.dark .token.keyword {
+  color: #0ea5e9;
+}
+
+.dark .token.function,
+.dark .token.class-name {
+  color: #fcd34d;
+}
+
+.dark .token.regex,
+.dark .token.important,
+.dark .token.variable {
+  color: #fb923c;
+}
+
+/* Line highlighting */
+.line-highlight {
+  background: rgba(173, 171, 166, 0.1);
+}
+
+.dark .line-highlight {
+  background: rgba(173, 171, 166, 0.15);
+}
+
+/* Command line */
+.command-line-prompt {
+  border-right: 1px solid #a8a29e;
+  color: #78716c;
+}
+
+.dark .command-line-prompt {
+  border-right: 1px solid #57534e;
+  color: #a8a29e;
+} 

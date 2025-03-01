@@ -1,0 +1,319 @@
+import MdxLayout from "@/app/layouts/MdxLayout";
+import Image from "next/image";
+import SlideItIn from "./slideitin.png";
+import Flow from "./flow.png";
+import Rendering from "./rendering.png";
+import { Tweet } from "react-tweet";
+import ThemedTweet from "@/app/components/ThemedTweet";
+
+# Shipping a Presentation Generator in 3 Days
+
+<Image src={SlideItIn} alt="Slide It In" />
+
+A few days ago, I was studying for my CS 146 midterm, which I should be doing right now instead of writing this....
+
+I was reading through some of the lecture notes, and I thought to myself: "Wouldn't it be nice if I could read slides instead of boring walls of text?"
+
+My friend Pranav posted this tweet a few weeks ago about how he makes slideshows on research:
+
+<ThemedTweet id="1878654750801141793" />
+
+This part of the tweet really resonated with me:
+
+> personally find slideshows easier to comb through than pages of notes
+
+That gave me an idea. What if I could take a document, or multiple documents, and convert it into a slideshow?
+
+I thought it would be a fun project to work on over the next couple of days. Who cares about the midterm anyways?
+
+As for the name of the project, I'll let you guess why I chose "Slide it In". ([definitely not this](https://knowyourmeme.com/memes/dih-to-yo-crack-slide-that-shi-in-gng-%F0%9F%92%94))
+
+## The Plan
+
+Before writing a single line of code, I needed to make some fundamental decisions about the architecture. I wanted a modern, responsive web application with an elegant, easy-to-use interface, as well as a blazingly fast backend.
+
+Not long ago, I made [Make it Jake's](https://jakesresu.me), a website that takes in a resume and converts it to Jake's Resume template. Uploading documents, processing, and returning a result... sound familiar? Software design patterns are a beautiful thing.
+
+I built Make it Jake's with Ruby on Rails, Remix.js, and Redis, so I thought it would be a fun challenge to make Slide it In with Go, Next.js, and Firestore.
+
+### Tech Stack Selection
+
+For the frontend, I chose:
+- **Next.js 14**: For its excellent developer experience, built-in routing, and server-side rendering capabilities
+- **TypeScript**: To add type safety and improve code quality
+- **Tailwind CSS**: For rapid UI development with utility classes
+- **Framer Motion**: To add polished animations and transitions
+
+For the backend, I went with:
+- **Go (Gin framework)**: For its performance, simplicity, and strong concurrency support
+- **Google Cloud Firestore**: As a scalable, serverless database for job storage
+- **Gemini 1.5 Flash API**: For AI-powered content generation
+- **Marp**: For converting markdown to presentation slides
+
+Marp is the backbone of the project. It's a markdown-based presentation tool that allows you to write in markdown and convert it to a presentation. It's a great tool for quickly creating presentations, and it's what I used to turn the slide-by-slide notes into an actual visual presentation.
+
+### Why Next.js for the Frontend?
+
+1. **Server-Side Rendering**: Next.js's server-side rendering capabilities allow me to generate the initial HTML for each page on the server side, which is great for performance and SEO.
+
+2. **Abstraction**: Next.js abstracts away a lot of the low-level details of building a React web application, such as routing, API requests, and image optimization. This allowed me to focus on building the core functionality of the project.
+
+3. **Familiarity**: I've used Next.js for all of my previous projects, so I was comfortable with the framework and its capabilities.
+
+### Why Go for the Backend?
+
+1. **API Performance**: Go's lightweight HTTP request handling makes it ideal for building fast REST APIs. The Gin framework further optimizes this with minimal overhead.
+
+2. **Concurrency Model**: Go's goroutines and channels provide an elegant way to handle multiple requests simultaneously. This was perfect for managing the asynchronous job processing and status monitoring without complex threading code.
+
+3. **Deployment Simplicity**: Go compiles to a single binary with minimal dependencies, making containerization straightforward and resulting in small Docker images that start quickly—ideal for serverless environments.
+
+4. **Trying something different**: I wanted to try something different, and Go was the perfect choice for this project. Nearly all of my previous project backends have been written in Python or Node.js.
+
+## Building the Frontend Experience
+
+I wanted the user experience to be intuitive, visually appealing, and responsive. The frontend needed to guide users through a multi-step process while providing real-time feedback.
+
+### Simple, Beautiful Landing Page
+
+My mental model around UX design is that cognitive load is the enemy. The more steps there are to complete a task, the more cognitive load there is. The more cognitive load there is, the more likely the user is to give up.
+
+I wanted the landing page to be simple yet beautiful, and I wanted it to be a good fit for the overall theme of the project.
+
+The landing page has a single clear action (Upload Documents), under an equally clear call to action. There's nothing to think about, and the user can just click the button and get started.
+
+<Image src={SlideItIn} alt="Landing Page" />
+
+I used an amber color palette for the project, and I think it looks pretty good. It's similar to the color of a pencil, which is a nice touch. For coherence, I made the background a notepad texture.
+
+### The Flow-Based UI
+
+I designed the application around a step-by-step flow that breaks down what could be a complex process into manageable pieces:
+
+1. **Theme Selection**: Users choose a visual theme for their presentation
+2. **File Upload**: Users upload their documents (PDF, Markdown, or TXT)
+3. **Settings Configuration**: Users customize audience type and detail level
+4. **Processing**: The system generates the presentation with real-time progress updates
+5. **Result**: Users preview and download their generated presentation
+
+<Image src={Flow} alt="Flow" />
+
+I put extra attention into the transitions between steps, using Framer Motion to create smooth animations that make the experience feel cohesive. I've found that small details like these can really elevate the overall user experience.
+
+### Challenge \#1: Real-Time Progress Updates
+
+One of the first challenges I encountered was providing real-time updates during the presentation generation process. Since this process could take anywhere from 15 seconds to a few minutes depending on document size, I needed a way to keep users informed about the progress.
+
+I had implemented something similar in [Make it Jake's](https://jakesresu.me), so I had some experience to draw from. 
+
+Just like in Make it Jake's, I went with Server-Sent Events (SSE) for a unidirectional communication channel from server to client. It's simpler than WebSockets and perfectly suited for this kind of status streaming:
+
+```typescript
+// Simplified version of the status streaming implementation
+const fetchStatus = async (jobId: string) => {
+  const eventSource = new EventSource(`${API_BASE_URL}/v1/slides/${jobId}`);
+  
+  eventSource.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    setStatus(data.status);
+    setProgress(data.progress);
+    
+    if (data.status === "completed" || data.status === "failed") {
+      eventSource.close();
+      if (data.status === "completed") {
+        onComplete({ resultUrl: data.resultUrl });
+      }
+    }
+  };
+  
+  eventSource.onerror = () => {
+    eventSource.close();
+    setError("Connection lost. Please refresh to check status.");
+  };
+};
+```
+
+This approach worked well, allowing users to see real-time updates as their presentation was being generated.
+
+### Challenge \#2: PDF Rendering
+
+One of the biggest challenges I faced was rendering the PDF in the frontend. I wanted to use the same PDF viewer that I used in Make it Jake's, but it didn't work well because some styles were not being applied correctly for Safari (damn it Apple).
+
+I originally was going to keep the buggy viewer and just add a warning to Safari users, but this seemed hacky and I wanted to actually fix the issue.
+
+An easy fix would be to just render an iFrame with the PDF route, but I didn't like how the native PDF viewer looked when embedded in a small container.
+
+Instead, I decided to return the slides not only as a PDF, but also as an HTML file. The HTML file is created by Marp, and it contains built-in controls and a presenter view.
+
+I updated the backend service to render the HTML file in the results route when `?download=false`, and I modified the Result component in the frontend to display an iFrame with the result URL.
+
+<Image src={Rendering} alt="Rendering" />
+
+Problem solved.
+
+## Backend Design
+
+The backend is where the work actually happens. It needed to handle document processing, AI content generation, and slide rendering efficiently.
+
+### Job Queue System
+
+One of the key architectural decisions was implementing a job queue system. Since presentation generation is an asynchronous process, I needed a way to manage jobs, track their status, and deliver results when ready. It wouldn't be a good UX if the server didn't respond until the entire process was complete.
+
+> Why not use a more robust job queue system like Redis or RabbitMQ? 
+
+I considered it, but I wanted to keep the complexity of the system low, and I knew that Firestore would be able to handle the load. Also, I used Redis for the same purpose in Make it Jake's, so I wanted to try something different.
+
+I built a custom job queue using Firestore as the persistence layer:
+
+```go
+// Simplified version of the queue service
+type Service struct {
+    firestoreClient *firestore.Client
+    slideService    slides.Service
+}
+
+func (s *Service) AddJob(ctx context.Context, job *models.Job) (string, error) {
+    // Generate a unique ID for the job
+    job.ID = uuid.New().String()
+    job.Status = "queued"
+    job.CreatedAt = time.Now()
+    
+    // Save the job to Firestore
+    _, err := s.firestoreClient.Collection("jobs").Doc(job.ID).Set(ctx, job)
+    if err != nil {
+        return "", err
+    }
+    
+    // Process the job asynchronously
+    go s.processJob(context.Background(), job)
+    
+    return job.ID, nil
+}
+```
+
+This approach allowed the API to respond immediately with a job ID, while the actual processing happened asynchronously.
+
+### AI Content Generation with Gemini
+
+The core of Slide It In is the AI content generation powered by Google's Gemini 1.5 Flash. The prompt engineering system was probably the most challenging part of the project to get right.
+
+#### Modular Prompt Engineering System
+
+This part took a lot of trial and error. I went through many iterations of the prompt templates before finding an approach that worked consistently. The breakthrough came when I shifted from have a single prompt to using a modular system.
+
+My system uses Go's `text/template` package to assemble different prompt components:
+
+```go
+// Generate theme example
+themeExample, err := generateThemeExample(theme)
+if err != nil {
+    return "", err
+}
+
+// Create template data
+data := map[string]interface{}{
+    "Theme":        theme,
+    "ThemeExample": themeExample,
+    "DetailLevel":  detailPrompt,
+    "Audience":     audiencePrompt,
+}
+
+// Parse and execute the template
+tmpl, err := template.New("slidePrompt").Parse(slideGenerationTemplate)
+if err != nil {
+    return "", err
+}
+```
+
+The system includes several key components:
+
+1. **Theme-Specific Instructions**: Each visual theme (Default, Beam, Rose Pine, Gaia, Uncover, Graph Paper) has its own configuration with parameters that affect slide layout, formatting, and classes:
+
+```go
+// Theme configurations
+var themeConfigs = map[string]map[string]interface{}{
+    "default": {
+        "UseLeadClass":    true,
+        "HasInvertClass":  true,
+        "HasTinyTextClass": false,
+        "HasTitleClass":   false,
+        "HeaderLocation":  "(top left of the slide)",
+        "FooterLocation":  "(bottom left of the slide)",
+        "ThemeDescription": "By default, the color scheme for each slide is light.",
+    },
+    "beam": {
+        "UseLeadClass":    false,
+        "HasInvertClass":  false,
+        "HasTinyTextClass": true,
+        "HasTitleClass":   true,
+        // Additional configuration...
+    },
+    // Other themes...
+}
+```
+
+2. **Detail Level Prompts**: The system constructs different prompts based on the user's selected detail level (detailed, medium, minimal):
+
+   - **Detailed**: Extracts comprehensive content with all key information and supporting details, creates more slides to accommodate depth
+   - **Medium**: Focuses on main concepts and key supporting details, consolidates related information
+   - **Minimal**: Extracts only the most essential information, focusing on key conclusions and critical data points
+
+3. **Audience-Targeted Prompts**: The system adapts the prompt based on the target audience:
+
+   - **General**: Uses accessible language, includes brief definitions, emphasizes broader context
+   - **Academic**: Preserves methodological details, citations, and theoretical frameworks
+   - **Technical**: Maintains technical terminology, implementation details, and code examples
+   - **Professional**: Highlights practical applications, actionable insights, and business relevance
+   - **Executive**: Focuses on strategic implications, outcomes, ROI, and high-level recommendations
+
+Early in development, I tried using a single generic prompt template. The results varied wildly in quality. Adding structure to the prompts and tailoring them to specific parameters significantly improved consistency.
+
+## Deployment and Infrastructure
+
+For deployment, I chose a serverless approach on Google Cloud. This wasn't my first time going fully serverless for a production application, but it was my first time going fully serverless for a project involving headless browser rendering (HTML -> PDF).
+
+Initially, I was worried about the memory and CPU limits of Google Cloud Run, but it turned out to be more than enough with a bit of configuration.
+
+### Fully Serverless Architecture
+
+The entire Slide It In application runs on a serverless infrastructure, which offers several advantages:
+
+1. **Automatic Scaling**: The system scales up during peak usage and down during quiet periods without any manual intervention.
+2. **Pay-per-Use Pricing**: I only pay for the resources I actually use, rather than provisioning servers that might sit idle.
+3. **No Infrastructure Management**: No need to worry about server maintenance, security patches, or scaling configurations.
+
+### Google Cloud Run
+
+Both the frontend and backend services are deployed as containers on Google Cloud Run, a fully managed platform for containerized applications.
+
+All I had to do was write `Dockerfile`s for the frontend and backend, and then create a `cloudbuild.yaml` file to deploy the containers.
+
+### Firestore as a Serverless Database
+
+Google Cloud Firestore serves as the serverless database for storing job metadata and status. Its real-time updates capability is particularly useful for the status tracking feature:
+
+1. **Real-time Updates**: Firestore's real-time listeners allow the backend to immediately react to job status changes
+2. **No Connection Management**: No need to worry about database connection pools or scaling
+3. **Document-based Structure**: Perfect fit for our job metadata structure
+
+I also used Firestore to temporarily store the final presentation for download. There are better ways to do this, such as using a storage bucket, but I wanted to keep the system simple and cost-effective. I used TTL indexes to automatically delete the presentation after 1 hour.
+
+## Results
+
+I'm really happy with how this project turned out! The AI content generation is surprisingly good, and I love the UI (not to mention the name).
+
+The project is fully open-source on [GitHub](https://github.com/martin226/slideitin). Give it a star pls. You can try it out for yourself by heading over to [justslideitin.com](https://justslideitin.com).
+
+Back to studying for that midterm....
+
+export const meta = {
+  title: "Shipping a Presentation Generator in 3 Days",
+  date: "03-01-2025",
+  tags: ["projects", "technical"],
+  description: "How I shipped justslideitin.com in 3 days, from idea to production.",
+}
+
+export default function MDXPage({ children }) {
+  return <MdxLayout>{children}</MdxLayout>
+
+}
