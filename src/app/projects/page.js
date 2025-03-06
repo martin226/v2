@@ -3,6 +3,7 @@
 import Link from "../components/Link";
 import ProjectList from "../components/ProjectList";
 
+import SlideItInImage from "../assets/projects/slideitin.png";
 import MakeItJakesImage from "../assets/projects/makeitjakes.gif";
 import TwirlImage from "../assets/projects/twirl.png";
 import LayoffEvadersImage from "../assets/projects/layoffevaders.png";
@@ -25,10 +26,21 @@ import { Search } from "lucide-react";
 export default function Home() {
   const projects = [
     {
+      title: "Slide it In",
+      href: "https://justslideitin.com",
+      description:
+        "a powerful presentation generator that transforms documents into beautiful slide decks using AI. 1,000+ users in 24 hours.",
+      image: SlideItInImage,
+      imageAlt: "Slide it In",
+      technologies: ["Go", "Next.js", "Google Cloud Platform"],
+      github: "https://github.com/martin226/slideitin",
+      demo: "https://justslideitin.com",
+    },
+    {
       title: "Make It Jake's",
       href: "https://jakesresu.me",
       description:
-        "a website for turning any resume into Jake's Resume template. 3,500+ users in 4 days, idea to production in < 2 days.",
+        "a website for turning any resume into Jake's Resume template. 5,000+ users, idea to production in < 2 days.",
       image: MakeItJakesImage,
       imageAlt: "Make It Jakes",
       technologies: ["Ruby on Rails", "Remix.js", "Redis", "Google Cloud Platform"],
