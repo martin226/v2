@@ -46,15 +46,27 @@ export default function About() {
           <span className="text-stone-600 dark:text-stone-400 italic font-medium">recently:</span>
           <ul className="grid gap-1 pl-4">
             <li className="relative flex items-start gap-4 group/item">
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
               <span className="text-stone-600 dark:text-stone-400">
                 shipped a{" "}
                 <Link href="https://jakesresu.me" className="font-medium">
                   product
                 </Link>{" "}
-                to 3,500+ users (idea → launch in &lt; 2 days)
+                in &lt; 2 days to 5,000+ users
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="text-stone-600 dark:text-stone-400">
+                did it again with another{" "}
+                <Link href="https://justslideitin.com" className="font-medium">
+                  product
+                </Link>{" "}
+                (1,000+ users in &lt; 24 hours)
+              </span>
+            </li>
+            <li className="relative flex items-start gap-4 group/item">
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
               <span className="text-stone-600 dark:text-stone-400">
                 built a{" "}
                 <Link href="https://github.com/martin226/litenet" className="font-medium">
@@ -64,6 +76,7 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
               <span className="text-stone-600 dark:text-stone-400">
                 created an <Link href="https://github.com/martin226/twirl" className="font-medium">AI agent</Link> for turning text/images into 3D-printable models (UofTHacks 2025 Winner)
               </span>
