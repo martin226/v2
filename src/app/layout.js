@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "./components/Header";
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           <CommandPalette />
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-ZVLSZR04HM" />
     </html>
   );
 }
