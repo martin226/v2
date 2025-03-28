@@ -76,14 +76,12 @@ export default function Header({ className }) {
               onClick={openCommandPalette}
               className="hidden sm:flex items-center gap-1 text-xs text-stone-500 dark:text-stone-400 bg-stone-50 dark:bg-stone-800 px-2 py-1 rounded-lg border border-stone-200 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-700 hover:border-stone-300 dark:hover:border-stone-600 transition-colors duration-200"
             >
-              {!isModifierPressed && (
-                <>
-                  <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-700 font-mono">
-                    {isMac ? '⌘' : 'ctrl'}
-                  </kbd>
-                  <span>+</span>
-                </>
-              )}
+              <span className={`flex items-center ${isModifierPressed ? 'opacity-0' : 'opacity-100'}`}>
+                <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-700 font-mono">
+                  {isMac ? '⌘' : 'ctrl'}
+                </kbd>
+                <span>+</span>
+              </span>
               <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-700 font-mono">
                 K
               </kbd>
