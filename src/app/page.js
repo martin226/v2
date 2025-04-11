@@ -48,11 +48,21 @@ export default function About() {
             <li className="relative flex items-start gap-4 group/item">
               <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
               <span className="text-stone-600 dark:text-stone-400">
+                created{" "}
+                <Link href="https://tryvibedraw.com" className="font-medium">
+                  Cursor for 3D modeling
+                </Link>{" "}
+                (3M+ views, 1,600+ stars, inbound VC interest from Sequoia, a16z, GC, others)
+              </span>
+            </li>
+            <li className="relative flex items-start gap-4 group/item">
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="text-stone-600 dark:text-stone-400">
                 shipped a{" "}
                 <Link href="https://jakesresu.me" className="font-medium">
                   product
                 </Link>{" "}
-                in &lt; 2 days to 5,000+ users
+                in &lt; 2 days to 10,000+ users
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
@@ -73,12 +83,6 @@ export default function About() {
                   deep learning framework
                 </Link>{" "}
                 from scratch in C++
-              </span>
-            </li>
-            <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
-              <span className="text-stone-600 dark:text-stone-400">
-                created an <Link href="https://github.com/martin226/twirl" className="font-medium">AI agent</Link> for turning text/images into 3D-printable models (UofTHacks 2025 Winner)
               </span>
             </li>
           </ul>

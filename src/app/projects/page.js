@@ -3,6 +3,7 @@
 import Link from "../components/Link";
 import ProjectList from "../components/ProjectList";
 
+import VibeDrawImage from "../assets/projects/vibedraw.gif";
 import SlideItInImage from "../assets/projects/slideitin.png";
 import MakeItJakesImage from "../assets/projects/makeitjakes.gif";
 import TwirlImage from "../assets/projects/twirl.png";
@@ -26,6 +27,17 @@ import { Search } from "lucide-react";
 export default function Home() {
   const projects = [
     {
+      title: "Vibe Draw",
+      href: "https://tryvibedraw.com",
+      description:
+        "the Cursor + Midjourney for 3D modeling. Create beautiful 3D assets from your roughest sketches in seconds. 3M+ views, 1,600+ stars.",
+      image: VibeDrawImage,
+      imageAlt: "Vibe Draw",
+      technologies: ["Python", "FastAPI", "React", "Next.js", "Three.js", "TypeScript", "Google Cloud Platform"],
+      github: "https://github.com/martin226/vibe-draw",
+      demo: "https://tryvibedraw.com",
+    },
+    {
       title: "Slide it In",
       href: "https://justslideitin.com",
       description:
@@ -40,7 +52,7 @@ export default function Home() {
       title: "Make It Jake's",
       href: "https://jakesresu.me",
       description:
-        "a website for turning any resume into Jake's Resume template. 5,000+ users, idea to production in < 2 days.",
+        "a website for turning any resume into Jake's Resume template. 10,000+ users, idea to production in < 2 days.",
       image: MakeItJakesImage,
       imageAlt: "Make It Jakes",
       technologies: ["Ruby on Rails", "Remix.js", "Redis", "Google Cloud Platform"],
