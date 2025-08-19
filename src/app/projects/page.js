@@ -30,7 +30,7 @@ export default function Home() {
       title: "Vibe Draw",
       href: "https://tryvibedraw.com",
       description:
-        "the Cursor + Midjourney for 3D modeling. Create beautiful 3D assets from your roughest sketches in seconds. 3M+ views, 1,600+ stars.",
+        "the Cursor + Midjourney for 3D modeling. Create beautiful 3D assets from your roughest sketches in seconds. 3M+ views, 1,900+ stars.",
       image: VibeDrawImage,
       imageAlt: "Vibe Draw",
       technologies: ["Python", "FastAPI", "React", "Next.js", "Three.js", "TypeScript", "Google Cloud Platform"],
