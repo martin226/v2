@@ -29,7 +29,7 @@ export default async function Writing() {
       <ul className="list-disc list-inside space-y-2 text-stone-600 dark:text-stone-400">
         {posts.map(({ title, date, slug }) => (
           <li className="flex justify-between items-center" key={slug}>
-            <span className="font-semibold text-stone-800 dark:text-stone-200 text-sm sm:text-base">
+            <span className="text-stone-800 dark:text-stone-200 text-sm sm:text-base">
               <Link href={`/writing/${slug}`} isNextLink={true}>
                 {title}
               </Link>

@@ -14,7 +14,7 @@ import { GalleryHorizontalEnd } from "lucide-react";
 
 export default function About() {
   return (
-    <div className="flex flex-col max-w-2xl mx-auto">
+    <div className="flex flex-col max-w-2xl mx-auto font-extralight">
       <ul className="grid gap-1 text-base">
         <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 dark:bg-stone-200 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />

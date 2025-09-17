@@ -32,14 +32,21 @@ export default function ProjectCard({
   className,
 }) {
   return (
-    <div className={`group bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${className}`}>
-      <a href={href} target="_blank" rel="noopener noreferrer" className="block overflow-hidden">
+    <div
+      className={`group bg-neutral-100 dark:bg-neutral-900 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${className}`}
+    >
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block overflow-hidden"
+      >
         <div className="relative">
           <Image
             src={image}
             placeholder={`data:image/svg+xml;base64,${toBase64(shimmer)}`}
             alt={imageAlt}
-            className="rounded-t-lg w-full h-[200px] group-hover:h-[275px] object-cover object-center transition-all duration-500"
+            className="rounded-t-lg w-full h-[250px] group-hover:h-[275px] object-cover object-center transition-all duration-500"
           />
         </div>
       </a>
@@ -50,21 +57,13 @@ export default function ProjectCard({
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-800 dark:text-neutral-200 font-bold text-2xl hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors duration-200 block"
+              className="text-neutral-800 dark:text-neutral-200 font-medium text-2xl hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors duration-200 block"
             >
               {title}
             </a>
-            <p className="text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">{description}</p>
-            <div className="flex flex-wrap gap-2 mt-4">
-              {technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="text-xs px-2 py-1 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <p className="text-neutral-600 dark:text-neutral-400 mt-2 leading-relaxed">
+              {description}
+            </p>
           </div>
           <div className="flex gap-2">
             {github && (
