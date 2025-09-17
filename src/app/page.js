@@ -2,14 +2,12 @@
 
 import Link from "./components/Link";
 import NextLink from "next/link";
-import Headshot from "@/app/assets/headshot.png";
 import Signature from "@/app/components/Signature";
 import ShopifyLogo from "@/app/components/icon/Shopify.png";
 import UWaterlooLogo from "@/app/components/icon/UWaterloo.png";
 import SunnybrookLogo from "@/app/components/icon/Sunnybrook.png";
-import JAMHacksLogo from "@/app/components/icon/JAMHacks.png";
-import StAugustineLogo from "@/app/components/icon/StAugustine.png";
 import BrowserbaseLogo from "@/app/components/icon/Browserbase.png";
+import PolymarketLogo from "@/app/components/icon/Polymarket.png";
 import Image from "next/image";
 import { useState } from "react";
 import { GalleryHorizontalEnd } from "lucide-react";
@@ -21,9 +19,33 @@ export default function About() {
         <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 dark:bg-stone-200 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
           <span className="text-stone-600 dark:text-stone-400">
-            CS @ {" "}
+            Engineering @{" "}
             <span className="inline-flex items-baseline gap-1">
-              <Image src={UWaterlooLogo} alt="UWaterloo Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+              <Image
+                src={PolymarketLogo}
+                alt="Polymarket Logo"
+                width={14}
+                height={14}
+                className="object-contain relative top-[2px]"
+              />
+              <Link href="https://polymarket.com" className="font-medium">
+                Polymarket
+              </Link>
+            </span>
+          </span>
+        </li>
+        <li className="group flex items-start gap-4 pl-4 relative hover:translate-x-1 transition-transform duration-200">
+          <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 dark:bg-stone-200 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
+          <span className="text-stone-600 dark:text-stone-400">
+            CS @{" "}
+            <span className="inline-flex items-baseline gap-1">
+              <Image
+                src={UWaterlooLogo}
+                alt="UWaterloo Logo"
+                width={14}
+                height={14}
+                className="object-contain relative top-[2px]"
+              />
               <Link href="https://uwaterloo.ca" className="font-medium">
                 UWaterloo
               </Link>
@@ -32,20 +54,27 @@ export default function About() {
         </li>
         <li className="group flex flex-col gap-3 pl-4 relative hover:translate-x-1 transition-transform duration-200">
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 dark:bg-stone-200 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
-          <span className="text-stone-600 dark:text-stone-400 italic font-medium">what i&apos;ve been building:</span>
+          <span className="text-stone-600 dark:text-stone-400 italic font-medium">
+            what i&apos;ve been building:
+          </span>
           <ul className="grid gap-1 pl-4">
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
                 created{" "}
                 <Link href="https://tryvibedraw.com" className="font-medium">
                   Cursor for 3D modeling
                 </Link>{" "}
-                (3M+ views, 1,900+ stars, inbound VC interest from Sequoia, a16z, GC, others)
+                (3M+ views, 1,900+ stars, inbound VC interest from Sequoia,
+                a16z, GC, others)
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
                 shipped a{" "}
                 <Link href="https://jakesresu.me" className="font-medium">
@@ -55,7 +84,9 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
                 did it again with another{" "}
                 <Link href="https://justslideitin.com" className="font-medium">
@@ -65,10 +96,15 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
                 built a{" "}
-                <Link href="https://github.com/martin226/litenet" className="font-medium">
+                <Link
+                  href="https://github.com/martin226/litenet"
+                  className="font-medium"
+                >
                   deep learning framework
                 </Link>{" "}
                 from scratch in C++
@@ -78,14 +114,24 @@ export default function About() {
         </li>
         <li className="group flex flex-col gap-3 pl-4 relative hover:translate-x-1 transition-transform duration-200">
           <div className="absolute left-0 top-[10px] w-[6px] h-[6px] bg-stone-800 dark:bg-stone-200 rotate-45 transform transition-all duration-300 group-hover:rotate-90 group-hover:scale-110" />
-          <span className="text-stone-600 dark:text-stone-400 italic font-medium">previously:</span>
+          <span className="text-stone-600 dark:text-stone-400 italic font-medium">
+            previously:
+          </span>
           <ul className="grid gap-1 pl-4">
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
-                SWE Intern @{" "}
+                Engineering @{" "}
                 <span className="inline-flex items-baseline gap-1">
-                  <Image src={ShopifyLogo} alt="Shopify Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+                  <Image
+                    src={ShopifyLogo}
+                    alt="Shopify Logo"
+                    width={14}
+                    height={14}
+                    className="object-contain relative top-[2px]"
+                  />
                   <Link href="https://shopify.com" className="font-medium">
                     Shopify
                   </Link>
@@ -93,11 +139,19 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
-                SWE Intern @{" "}
+                Engineering @{" "}
                 <span className="inline-flex items-baseline gap-1">
-                  <Image src={BrowserbaseLogo} alt="Browserbase Logo" width={14} height={14} className="object-contain relative top-[2px]" />
+                  <Image
+                    src={BrowserbaseLogo}
+                    alt="Browserbase Logo"
+                    width={14}
+                    height={14}
+                    className="object-contain relative top-[2px]"
+                  />
                   <Link href="https://browserbase.com" className="font-medium">
                     Browserbase
                   </Link>
@@ -105,49 +159,47 @@ export default function About() {
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
-                ML research at{" "}
+                ML research @{" "}
                 <span className="inline-flex items-baseline gap-1">
-                  <Image src={SunnybrookLogo} alt="Sunnybrook Logo" width={14} height={14} className="object-contain relative top-[2px]" />
-                  <Link href="https://sunnybrook.ca/research/" className="font-medium">
+                  <Image
+                    src={SunnybrookLogo}
+                    alt="Sunnybrook Logo"
+                    width={14}
+                    height={14}
+                    className="object-contain relative top-[2px]"
+                  />
+                  <Link
+                    href="https://sunnybrook.ca/research/"
+                    className="font-medium"
+                  >
                     Sunnybrook
                   </Link>
                 </span>
               </span>
             </li>
             <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
+              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">
+                ↳
+              </span>
               <span className="text-stone-600 dark:text-stone-400">
-                research at{" "}
+                Research @{" "}
                 <span className="inline-flex items-baseline gap-1">
-                  <Image src={UWaterlooLogo} alt="UWaterloo Logo" width={14} height={14} className="object-contain relative top-[2px]" />
-                  <Link href="https://cs.uwaterloo.ca/~dbarrada/" className="font-medium">
+                  <Image
+                    src={UWaterlooLogo}
+                    alt="UWaterloo Logo"
+                    width={14}
+                    height={14}
+                    className="object-contain relative top-[2px]"
+                  />
+                  <Link
+                    href="https://cs.uwaterloo.ca/~dbarrada/"
+                    className="font-medium"
+                  >
                     UWaterloo
-                  </Link>
-                </span>
-              </span>
-            </li>
-            <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
-              <span className="text-stone-600 dark:text-stone-400">
-                organized{" "}
-                <span className="inline-flex items-baseline gap-1">
-                  <Image src={JAMHacksLogo} alt="JAMHacks Logo" width={14} height={14} className="object-contain relative top-[2px]" />
-                  <Link href="https://www.jamhacks.ca/" className="font-medium">
-                    JAMHacks
-                  </Link>
-                </span>
-              </span>
-            </li>
-            <li className="relative flex items-start gap-4 group/item">
-              <span className="absolute left-[-20px] top-0 text-stone-500 dark:text-stone-500">↳</span>
-              <span className="text-stone-600 dark:text-stone-400">
-                led my school&apos;s{" "}
-                <span className="inline-flex items-baseline gap-1">
-                  <Image src={StAugustineLogo} alt="St. Augustine Logo" width={14} height={14} className="object-contain relative top-[2px]" />
-                  <Link href="https://app.staugustinechs.ca/" className="font-medium">
-                    mobile app
                   </Link>
                 </span>
               </span>
@@ -164,18 +216,8 @@ export default function About() {
         <GalleryHorizontalEnd className="size-5 inline align-top ml-1 transition-transform group-hover:rotate-3" />
       </NextLink>
 
-      <div className="flex flex-col sm:flex-row items-center justify-between mt-4">
-        <div className="relative flex-1 flex items-center">
-          <Signature />
-        </div>
-        <div className="w-48 h-48 relative rounded-full border-2 border-stone-200 dark:border-stone-700 shadow-lg overflow-hidden bg-stone-50 dark:bg-stone-800">
-          <Image
-            src={Headshot}
-            alt="Martin Sit Headshot"
-            fill
-            className="object-cover object-top rounded-full"
-          />
-        </div>
+      <div className="flex flex-col sm:flex-row items-center justify-end mt-8">
+        <Signature />
       </div>
     </div>
   );
