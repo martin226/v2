@@ -17,6 +17,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "cmdk": "^1.0.4",
     "framer-motion": "^12.4.3",
+    "geist": "^1.5.1",
     "lucide-react": "^0.475.0",
     "next": "14.2.6",
     "prismjs": "^1.29.0",

@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -6,8 +6,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CommandPalette from "./components/CommandPalette";
 import ThemeProvider from "./components/ThemeProvider";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Martin Sit",
@@ -17,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={GeistSans.className}>
         <SpeedInsights />
         <ThemeProvider>
           <main className="flex justify-center bg-stone-100 dark:bg-black font-extralight min-h-screen selection:bg-yellow-200 dark:selection:bg-yellow-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:16px_16px]">
