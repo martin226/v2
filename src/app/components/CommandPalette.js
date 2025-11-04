@@ -140,7 +140,7 @@ export default function CommandPalette() {
         runCommand(() => router.push("/writing"));
       } else if (key === "x") {
         e.preventDefault();
-        runCommand(() => window.open("https://x.com/_martinsit", "_blank"));
+        runCommand(() => window.open("https://x.com/martinsit", "_blank"));
       } else if (key === "l") {
         e.preventDefault();
         runCommand(() =>
