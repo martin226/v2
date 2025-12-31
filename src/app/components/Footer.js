@@ -4,7 +4,7 @@ export default function Footer({ className }) {
   const links = [
     {
       name: "x",
-      href: "https://x.com/_martinsit",
+      href: "https://x.com/martinsit",
       icon: Twitter,
     },
     {
