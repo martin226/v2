@@ -1,0 +1,35 @@
+name: Fix WebP files
+on: workflow_dispatch
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: perf/asset-and-code-splitting-optimizations
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Decode base64 WebP files back to binary
+        run: |
+          for f in src/app/assets/projects/layoffevaders.webp \
+                   src/app/assets/projects/sachs-website.webp \
+                   src/app/assets/projects/twirl.webp \
+                   src/app/assets/projects/credibility.webp \
+                   src/app/assets/projects/sensai.webp; do
+            echo "Processing $f..."
+            base64 -d "$f" > "${f}.bin"
+            mv "${f}.bin" "$f"
+            head -c 4 "$f" | od -A x -t x1
+          done
+      - name: Commit fixed files
+        run: |
+          git config user.email "46298951+martin226@users.noreply.github.com"
+          git config user.name "Martin Sit"
+          git add src/app/assets/projects/layoffevaders.webp
+          git add src/app/assets/projects/sachs-website.webp
+          git add src/app/assets/projects/twirl.webp
+          git add src/app/assets/projects/credibility.webp
+          git add src/app/assets/projects/sensai.webp
+          git commit -m "fix: decode base64-corrupted WebP files back to valid binary"
+          git push
