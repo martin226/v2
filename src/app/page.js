@@ -1,16 +1,17 @@
-"use client";
-
 import Link from "./components/Link";
 import NextLink from "next/link";
-import Signature from "@/app/components/Signature";
 import ShopifyLogo from "@/app/components/icon/Shopify.png";
 import UWaterlooLogo from "@/app/components/icon/UWaterloo.png";
 import SunnybrookLogo from "@/app/components/icon/Sunnybrook.png";
 import BrowserbaseLogo from "@/app/components/icon/Browserbase.png";
 import PolymarketLogo from "@/app/components/icon/Polymarket.png";
 import Image from "next/image";
-import { useState } from "react";
+import dynamic from "next/dynamic";
 import { GalleryHorizontalEnd } from "lucide-react";
+
+const Signature = dynamic(() => import("@/app/components/Signature"), {
+  ssr: false,
+});
 
 export default function About() {
   return (
