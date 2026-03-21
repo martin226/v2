@@ -38,6 +38,7 @@ export default function Footer({ className }) {
             <a
               key={link.name}
               href={link.href}
+              aria-label={link.name}
               className="group flex items-center hover:text-neutral-800 dark:hover:text-neutral-200"
               target="_blank"
               rel="noopener noreferrer"
