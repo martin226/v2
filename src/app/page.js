@@ -2,7 +2,10 @@
 
 import Link from "./components/Link";
 import NextLink from "next/link";
-import Signature from "@/app/components/Signature";
+import dynamic from "next/dynamic";
+const Signature = dynamic(() => import("@/app/components/Signature"), {
+  ssr: false,
+});
 import ShopifyLogo from "@/app/components/icon/Shopify.png";
 import UWaterlooLogo from "@/app/components/icon/UWaterloo.png";
 import SunnybrookLogo from "@/app/components/icon/Sunnybrook.png";

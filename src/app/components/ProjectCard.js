@@ -26,6 +26,7 @@ export default function ProjectCard({
   href,
   image,
   imageAlt,
+  videoSrc,
   technologies,
   github,
   demo,
@@ -42,12 +43,24 @@ export default function ProjectCard({
         className="block overflow-hidden"
       >
         <div className="relative">
-          <Image
-            src={image}
-            placeholder={`data:image/svg+xml;base64,${toBase64(shimmer)}`}
-            alt={imageAlt}
-            className="rounded-t-lg w-full h-[250px] group-hover:h-[275px] object-cover object-center transition-all duration-500"
-          />
+          {videoSrc ? (
+            <video
+              src={videoSrc}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="rounded-t-lg w-full h-[250px] group-hover:h-[275px] object-cover object-center transition-all duration-500"
+            />
+          ) : (
+            <Image
+              src={image}
+              placeholder={`data:image/svg+xml;base64,${toBase64(shimmer)}`}
+              alt={imageAlt}
+              sizes="(max-width: 768px) 100vw, 500px"
+              className="rounded-t-lg w-full h-[250px] group-hover:h-[275px] object-cover object-center transition-all duration-500"
+            />
+          )}
         </div>
       </a>
       <div className="p-5">

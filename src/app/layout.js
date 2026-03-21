@@ -4,8 +4,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CommandPalette from "./components/CommandPalette";
+import dynamic from "next/dynamic";
 import ThemeProvider from "./components/ThemeProvider";
+
+const CommandPalette = dynamic(() => import("./components/CommandPalette"), {
+  ssr: false,
+});
 
 export const metadata = {
   title: "Martin Sit",
@@ -15,6 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics gaId="G-ZVLSZR04HM" />
+      </head>
       <body className={GeistSans.className}>
         <SpeedInsights />
         <ThemeProvider>
@@ -28,7 +35,6 @@ export default function RootLayout({ children }) {
           <CommandPalette />
         </ThemeProvider>
       </body>
-      <GoogleAnalytics gaId="G-ZVLSZR04HM" />
     </html>
   );
 }
