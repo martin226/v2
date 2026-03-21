@@ -36,7 +36,7 @@ export default function Footer({ className }) {
         <div className="flex flex-wrap gap-4">
           {links.map((link, index) => (
             <a
-              key={index}
+              key={link.name}
               href={link.href}
               className="group flex items-center hover:text-neutral-800 dark:hover:text-neutral-200"
               target="_blank"
@@ -75,7 +75,7 @@ export default function Footer({ className }) {
           </a>
         </div>
       </div>
-      <p>{new Date().getFullYear()} &copy; Martin Sit</p>
+      <p suppressHydrationWarning>{new Date().getFullYear()} &copy; Martin Sit</p>
     </footer>
   );
 }

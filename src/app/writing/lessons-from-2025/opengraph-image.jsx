@@ -66,13 +66,16 @@ export default async function Image() {
     "node_modules/geist/dist/fonts/geist-sans/Geist-Bold.ttf"
   );
 
+  // Start network fetch early (don't await yet) — runs while sync reads happen
+  const instrumentSerifCssPromise = fetch(
+    "https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap"
+  ).then((res) => res.text());
+
   const geistRegular = readFileSync(geistRegularPath);
   const geistBold = readFileSync(geistBoldPath);
 
-  const instrumentSerifResponse = await fetch(
-    "https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap"
-  );
-  const instrumentSerifCss = await instrumentSerifResponse.text();
+  // Now await the network result
+  const instrumentSerifCss = await instrumentSerifCssPromise;
   const instrumentSerifFontUrl =
     instrumentSerifCss.match(/src: url\(([^)]+)\)/)?.[1];
   const instrumentSerifFontData = await fetch(instrumentSerifFontUrl).then(

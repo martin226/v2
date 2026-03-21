@@ -7,7 +7,7 @@ export default function HorizontalNav({ links }) {
     <nav className="flex items-center gap-2 sm:gap-4 md:gap-6">
       {links.map((link, index) => (
         <Link
-          key={index}
+          key={link.href}
           href={link.href}
           isActive={link.isActive}
           isNextLink={link.isNextLink}

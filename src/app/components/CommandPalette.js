@@ -23,6 +23,24 @@ import {
 import useMobileDevice from "../hooks/useMobileDevice";
 import { useTheme } from "./ThemeProvider";
 
+function Shortcut({ isModifierPressed, children }) {
+  return (
+    <div className="flex text-xs items-center gap-1 ml-auto text-stone-500 dark:text-stone-500">
+      {!isModifierPressed && (
+        <>
+          <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">
+            shift
+          </kbd>
+          <span>+</span>
+        </>
+      )}
+      <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">
+        {children}
+      </kbd>
+    </div>
+  );
+}
+
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [isMac, setIsMac] = useState(false);
@@ -174,26 +192,12 @@ export default function CommandPalette() {
     command();
   };
 
+  const currentSection = getCurrentSection();
+
   // If mobile device, don't render the command palette
   if (isMobileDevice) {
     return null;
   }
-
-  const Shortcut = ({ children }) => (
-    <div className="flex text-xs items-center gap-1 ml-auto text-stone-500 dark:text-stone-500">
-      {!isModifierPressed && (
-        <>
-          <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">
-            shift
-          </kbd>
-          <span>+</span>
-        </>
-      )}
-      <kbd className="px-1.5 py-0.5 rounded bg-stone-100 dark:bg-stone-800 font-mono text-stone-600 dark:text-stone-400">
-        {children}
-      </kbd>
-    </div>
-  );
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -212,17 +216,17 @@ export default function CommandPalette() {
               }
             }}
           >
-            {getCurrentSection() && (
+            {currentSection && (
               <div className="px-5 py-6 border-b border-stone-200 dark:border-stone-700 flex items-center gap-3">
                 <div className="p-1.5 bg-stone-100 dark:bg-stone-800 rounded-lg text-stone-600 dark:text-stone-400">
-                  {getCurrentSection().icon}
+                  {currentSection.icon}
                 </div>
                 <div className="flex-1">
                   <h2 className="font-medium text-stone-900 dark:text-stone-100">
-                    {getCurrentSection().name}
+                    {currentSection.name}
                   </h2>
                   <p className="text-sm text-stone-500 dark:text-stone-400">
-                    {getCurrentSection().description}
+                    {currentSection.description}
                   </p>
                 </div>
               </div>
@@ -261,7 +265,7 @@ export default function CommandPalette() {
                 >
                   <Home className="h-4 w-4" />
                   <span className="flex-1">Go to Home</span>
-                  <Shortcut>H</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>H</Shortcut>
                 </Command.Item>
                 <Command.Item
                   value="projects"
@@ -270,7 +274,7 @@ export default function CommandPalette() {
                 >
                   <FolderGit2 className="h-4 w-4" />
                   <span className="flex-1">Go to Projects</span>
-                  <Shortcut>P</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>P</Shortcut>
                 </Command.Item>
                 <Command.Item
                   value="writing"
@@ -279,7 +283,7 @@ export default function CommandPalette() {
                 >
                   <PenLine className="h-4 w-4" />
                   <span className="flex-1">Go to Writing</span>
-                  <Shortcut>W</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>W</Shortcut>
                 </Command.Item>
               </Command.Group>
 
@@ -298,7 +302,7 @@ export default function CommandPalette() {
                 >
                   <Twitter className="h-4 w-4" />
                   <span className="flex-1">X Profile</span>
-                  <Shortcut>X</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>X</Shortcut>
                 </Command.Item>
                 <Command.Item
                   value="linkedin"
@@ -314,7 +318,7 @@ export default function CommandPalette() {
                 >
                   <Linkedin className="h-4 w-4" />
                   <span className="flex-1">LinkedIn Profile</span>
-                  <Shortcut>L</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>L</Shortcut>
                 </Command.Item>
                 <Command.Item
                   value="github"
@@ -327,7 +331,7 @@ export default function CommandPalette() {
                 >
                   <Github className="h-4 w-4" />
                   <span className="flex-1">GitHub Profile</span>
-                  <Shortcut>G</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>G</Shortcut>
                 </Command.Item>
                 <Command.Item
                   value="email"
@@ -340,7 +344,7 @@ export default function CommandPalette() {
                 >
                   <Mail className="h-4 w-4" />
                   <span className="flex-1">Email</span>
-                  <Shortcut>E</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>E</Shortcut>
                 </Command.Item>
                 <Command.Item
                   value="source"
@@ -353,7 +357,7 @@ export default function CommandPalette() {
                 >
                   <CodeXml className="h-4 w-4" />
                   <span className="flex-1">Website Repository</span>
-                  <Shortcut>C</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>C</Shortcut>
                 </Command.Item>
               </Command.Group>
 
@@ -374,7 +378,7 @@ export default function CommandPalette() {
                   <span className="flex-1">
                     Toggle {theme === "light" ? "Dark" : "Light"} Mode
                   </span>
-                  <Shortcut>T</Shortcut>
+                  <Shortcut isModifierPressed={isModifierPressed}>T</Shortcut>
                 </Command.Item>
               </Command.Group>
             </Command.List>

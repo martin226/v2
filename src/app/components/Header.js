@@ -3,7 +3,7 @@
 import HorizontalNav from "./HorizontalNav";
 import { usePathname } from "next/navigation";
 import Link from "./Link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useModifierKey from "../hooks/useModifierKey";
 import useMobileDevice from "../hooks/useMobileDevice";
 import CurvedArrow from "./CurvedArrow";
@@ -34,7 +34,7 @@ export default function Header({ className }) {
     window.dispatchEvent(new CustomEvent('open-command-palette'));
   };
 
-  const links = [
+  const links = useMemo(() => [
     {
       name: "about",
       href: "/",
@@ -53,7 +53,7 @@ export default function Header({ className }) {
       isActive: pathname.startsWith("/writing"),
       isNextLink: true,
     },
-  ];
+  ], [pathname]);
 
   return (
     <div className="flex justify-between items-center">
