@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { Twitter, Linkedin, Github, FileText, Mail, CodeXml } from "lucide-react";
 
 export default function Footer({ className }) {
@@ -76,7 +77,16 @@ export default function Footer({ className }) {
           </a>
         </div>
       </div>
-      <p suppressHydrationWarning>{new Date().getFullYear()} &copy; Martin Sit</p>
+      <p>
+        <span suppressHydrationWarning>{new Date().getFullYear()}</span> &copy; Martin Sit
+        <span className="mx-2">·</span>
+        <NextLink
+          href="/resources"
+          className="hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
+        >
+          resources
+        </NextLink>
+      </p>
     </footer>
   );
 }
