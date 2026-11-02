@@ -81,7 +81,7 @@ const sections = [
     title: "careers",
     items: [
       {
-        name: "Argo",
+        name: "Argo Apply",
         href: "https://www.argoapply.com/",
         description:
           "finds jobs that match your goals, tailors your resume, and applies for you",
